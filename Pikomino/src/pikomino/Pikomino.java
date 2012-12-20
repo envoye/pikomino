@@ -8,6 +8,7 @@ package pikomino;
  *
  * @author Paulo Carvalho
  */
+//alteração
 public class Pikomino {
 
     /**
