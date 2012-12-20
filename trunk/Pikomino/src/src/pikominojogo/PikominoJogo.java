@@ -15,5 +15,6 @@ public class PikominoJogo {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        int qwe;
     }
 }
