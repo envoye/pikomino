@@ -10,8 +10,14 @@ package pikomino;
  */
 public class PecasJogo {
     
-    public int inser(int n){
-        int p = n+20;
+	int pecas;
+	
+    public PecasJogo(int actuais) {
+		pecas = actuais;
+	}
+
+	public int inser(int n){
+        int p = n+pecas;
         return p;
     }
     
