@@ -9,8 +9,7 @@ public class Main {
         // TODO Auto-generated method stub
         String teste3 = "Success!";
         System.out.println(teste3);
-        PecasJogo pc = new PecasJogo(12);
-        System.out.println("O valor e: " + pc.inser(10) + " minhocas");
+
         
     }
 }
