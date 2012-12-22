@@ -8,7 +8,7 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
-import pikomino.utils.Imagens;
+import pikomino.utils.Images;
 
 /**
  * Shows a pair of dice that are rolled when the user clicks a button that
@@ -82,22 +82,22 @@ public class DicePanelWithButton extends JPanel {
         //g.drawRect(x, y, 44, 44);
         
         if (val == 1) {
-           g.drawImage(Imagens.ImagemDadoUm, x, y, 45, 45, this);
+           g.drawImage(Images.diceImages.get(1), x, y, 45, 45, this);
         }
         if (val == 2) {
-            g.drawImage(Imagens.ImagemDadoDois, x, y, 45, 45, this);
+            g.drawImage(Images.diceImages.get(2), x, y, 45, 45, this);
         }
         if (val == 3) {
-            g.drawImage(Imagens.ImagemDadoTres, x, y, 45, 45, this);
+            g.drawImage(Images.diceImages.get(3), x, y, 45, 45, this);
         }
         if (val == 4) {
-            g.drawImage(Imagens.ImagemDadoQuatro, x, y, 45, 45, this);
+            g.drawImage(Images.diceImages.get(4), x, y, 45, 45, this);
         }
         if (val == 5) {
-            g.drawImage(Imagens.ImagemDadoCinco, x, y, 45, 45, this);
+            g.drawImage(Images.diceImages.get(5), x, y, 45, 45, this);
         }
         if (val == 6) {
-            g.drawImage(Imagens.ImagemDadoMinhoca, x, y, 45, 45, this);
+            g.drawImage(Images.diceImages.get(6), x, y, 45, 45, this);
         }
         
     }
