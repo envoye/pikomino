@@ -19,7 +19,9 @@ public class Piece {
 			return;
 		}else{
 			this.value = value;
-			if(value <25){
+			if(value == 20){
+				this.wormValue = 0;
+			}else if(value <25){
 				this.wormValue = 1;
 			}else if(value <29){
 				this.wormValue = 2;
