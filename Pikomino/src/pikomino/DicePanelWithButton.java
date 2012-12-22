@@ -8,6 +8,8 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
+import pikomino.utils.Imagens;
+
 /**
  * Shows a pair of dice that are rolled when the user clicks a button that
  * appears below the dice.
