@@ -7,6 +7,9 @@ import java.util.HashMap;
 
 import javax.imageio.ImageIO;
 
+import pikomino.model.Dice;
+import pikomino.model.Piece;
+
 public class Images {
 	public static HashMap<Integer, BufferedImage> diceImages = new HashMap<Integer, BufferedImage>();
 	public static HashMap<Integer, BufferedImage> piecesImages = new HashMap<Integer, BufferedImage>();
@@ -44,11 +47,27 @@ public class Images {
             piecesImages.put(36, ImageIO.read(new File("Data\\Images\\Pieces\\Piece36.png")));
                    
 
-}
-catch (IOException e) {
-	System.out.println("Error on upload images!");
-        }
+		}
+		catch (IOException e) {
+			System.out.println("Error on upload images!");
+		}
     }
 
+    
+    public static BufferedImage getImageOf(Object object) {
+    	
+    	if(object instanceof Piece) {
+    		
+    		return piecesImages.get(((Piece)object).getValue());
+    	}
+    	
+    	if(object instanceof Dice) {
+    		
+    		return diceImages.get(((Dice)object).getDieFaceValue());
+    	}
+    	
+    	throw new IllegalArgumentException();
+    	
+    }
     
 }
