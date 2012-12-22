@@ -2,6 +2,7 @@ package pikomino;
 
 import javax.swing.JFrame;
 
+import pikomino.model.GameBoard;
 import pikomino.model.Model;
 import pikomino.view.PikominoFrame;
 
@@ -9,10 +10,11 @@ public class Main {
 
 	/**
 	 * @param args
+	 * @throws Exception 
 	 */
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
 
-		new PikominoFrame(new Model(null)).setVisible(true);
+		new PikominoFrame(new Model(new GameBoard("qwe","asd"))).setVisible(true);
 
 //		JFrame window = new JFrame();
 //		DicePanelWithButton content = new DicePanelWithButton();
