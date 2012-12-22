@@ -1,4 +1,4 @@
-package pikomino;
+package pikomino.utils;
 
 import java.awt.image.BufferedImage;
 import java.io.File;
