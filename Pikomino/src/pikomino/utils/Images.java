@@ -11,8 +11,12 @@ public class Images {
 	public static HashMap<Integer, BufferedImage> diceImages = new HashMap<Integer, BufferedImage>();
 	public static HashMap<Integer, BufferedImage> piecesImages = new HashMap<Integer, BufferedImage>();
 	
+	public static BufferedImage background = null;
+	
     static {
         try {
+        	
+        	background = ImageIO.read(new File("resources\\Images\\Background.jpg"));
 
             diceImages.put(6, ImageIO.read(new File("resources\\Images\\Dice\\DieWorm.png")));
             diceImages.put(5, ImageIO.read(new File("resources\\Images\\Dice\\Die5.png")));
