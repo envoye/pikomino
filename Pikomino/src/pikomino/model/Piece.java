@@ -1,11 +1,21 @@
 package pikomino.model;
 
 public class Piece {
-	int value;
-	int wormValue;
+	int value = 0;
+	int wormValue = 0;
 	
-	public Piece() {
+	
+	public static Piece createPiece(int value){
+		if(value<20 || value>36)
+			throw new IllegalArgumentException();
+		
+		return new Piece(value); 
+			
+	}
+	
+	private Piece(int value ) {
 		super();
+		setValue(value);
 	
 		// TODO Auto-generated constructor stub
 	}
@@ -14,11 +24,7 @@ public class Piece {
 		return value;
 	}
 	
-	public void setValue(int value) {
-		if(value<20 || value>36){
-			return;
-		}else{
-			this.value = value;
+	public void setValue(Integer value) {
 			if(value == 20){
 				this.wormValue = 0;
 			}else if(value <25){
@@ -30,8 +36,6 @@ public class Piece {
 			}else{
 				this.wormValue = 4;
 			}
-			
-		}
 	}
 	public int getWormValue() {
 		return wormValue;
