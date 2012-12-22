@@ -12,7 +12,7 @@ public class Piece {
 			
 	}
 	
-	public Piece(int value) {
+	private Piece(int value) {
 		super();
 		setValue(value);	
 	}
@@ -25,8 +25,9 @@ public class Piece {
 		return wormValue;
 	}
 	
-	public void setValue(int value) {
+	private void setValue(int value) {
 			this.value = value;
+			
 			if(value == 20){
 				this.wormValue = 0;
 			}else if(value <25){
