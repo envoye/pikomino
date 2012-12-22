@@ -1,12 +1,11 @@
 package pikomino.view.screen;
 
-import java.awt.BasicStroke;
-import java.awt.Color;
-import java.awt.Font;
 import java.awt.Graphics2D;
 import java.awt.geom.Rectangle2D;
+import java.util.List;
 
 import pikomino.model.Model;
+import pikomino.model.Piece;
 import pikomino.utils.Images;
 import pikomino.view.GamePanel;
 
@@ -31,21 +30,14 @@ public class Screen {
 		
         gBuffered.drawImage(Images.background, 0, 0, widthScreen, heightScreen, null);
         
-//		gBuffered.setColor(Color.lightGray);
-//        gBuffered.setStroke(new BasicStroke(5,BasicStroke.CAP_ROUND,BasicStroke.JOIN_ROUND));
-//
-//        //---------------------------Imprime Baralho------------------------------
-//        gBuffered.drawRect(baralhoPosX, baralhoPosY, WidthCarta-2, (int) HeightCarta-2);
-//        if(baralho.size()>0)
-//        {
-//        	gBuffered.drawImage(Imagens.ImagemCostas, baralhoPosX, baralhoPosY,
-//        			WidthCarta, HeightCarta, null);
-//        }
-//        gBuffered.setFont(new Font("Arial", 0,24));
-//        stringBox = gBuffered.getFontMetrics().getStringBounds("Baralho", gBuffered);
-//        gBuffered.drawString("Baralho", (int) (baralhoPosX + WidthCarta/2 - stringBox.getCenterX()), (int) (baralhoPosY + HeightCarta + stringBox.getHeight()));
-//
-//		
+        List<Piece> pieces = model.getPieces();
+        
+        for(int i = 0; i< pieces.size() ; i++)
+        {
+        	
+        	gBuffered.drawImage(Images.getImageOf(pieces.get(i)), 40 + (i%8)*60 , 50 +  130 * (i/8), 50, 100, null);
+        }
+        
 	}
 
 
