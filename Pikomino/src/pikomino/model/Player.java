@@ -15,14 +15,27 @@ public class Player {
 		if(isPSEmpty())
 			return 0;
 		
-		return 0;
+		int sum=0;
+		// X for Piece
+		for(Piece x : piecesStack){
+			sum+=x.getValue();
+		}
+		
+		return sum;
 	}
 	
 	public int biggestNumber(){
 		if(isPSEmpty())
 			return 0;
 		
-		return 0;
+		int biggest=0;
+		for(Piece x : piecesStack){
+			if(x.getValue() > biggest){
+				biggest = x.getValue();
+			}
+		}
+		
+		return biggest;
 	}
 	
 	private boolean isPSEmpty(){

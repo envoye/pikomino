@@ -10,9 +10,12 @@ public class GameBoard {
 	private ArrayList<Player> players = new ArrayList<Player>();
 	private int actualPlayer = 0;
 	// Arrays suited for using the Dice Class	
-	private Dice[] playableDice;
-	private Dice[] playedDice;
+	//private Dice[] playableDice;
+	//private Dice[] playedDice;
+	private ArrayList<Dice> playableDice= new ArrayList<Dice>();
+	private ArrayList<Dice> playedDice = new ArrayList<Dice>();
 
+	
 	
 	public GameBoard(ArrayList<String> names) throws Exception{
 		if(n_players == names.size()){
@@ -48,11 +51,11 @@ public class GameBoard {
 		}
 	}
 	
-	public Dice[] getPlayableDice(){
+	public ArrayList getPlayableDice(){
 		return this.playableDice;
 	}
 	
-	public Dice[] getPlayedDice(){
+	public ArrayList getPlayedDice(){
 		return this.playedDice;
 	}
 
@@ -61,23 +64,27 @@ public class GameBoard {
 	}
 
 	public void rollDice(){
-		for(int diceCounter = 0; diceCounter < 8; diceCounter++){
-			if (this.playableDice[diceCounter].getDieId() != 0)
-				this.playableDice[diceCounter].setDieFaceValue(rollDie());
+		// X for die
+		for(Dice x : playableDice){
+			if (x.getDieId() != 0)
+				x.setDieFaceValue(rollDie());
 		}
 	}
 
 	public void selectedDice(){
-		for(int diceCounter = 0; diceCounter < 8; diceCounter++){
-			if (this.playedDice[diceCounter].getDieId() != 0)
-				this.playedDice[diceCounter].setDieFaceValue(rollDie());
+		// X for die
+		for(Dice x : playedDice){
+			if (x.getDieId() != 0)
+				x.setDieFaceValue(rollDie());
 		}
 	}
 	
 	public int getTotalDicePlayed(){
 		int diceTotal = 0;
-		for (int diceCounter = 0; diceCounter < 8; diceCounter++){
-			diceTotal += this.playedDice[diceCounter].getDieFaceValue(); 
+		
+		// X for die
+		for(Dice x : playedDice){
+			diceTotal += x.getDieFaceValue();
 		}
 		return diceTotal;
 	}
