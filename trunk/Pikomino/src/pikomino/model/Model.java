@@ -1,3 +1,4 @@
+package pikomino.model;
 import java.util.Observable;
 
 public class Model extends Observable{
@@ -7,6 +8,13 @@ public class Model extends Observable{
 		gb =g;
 		
 		//Avisa os Observers da modificação
+		setChanged();
+		notifyObservers();
+	}
+	
+	public void changeNextPlayer(){
+		gb.changeNextPlayer();
+		
 		setChanged();
 		notifyObservers();
 	}
