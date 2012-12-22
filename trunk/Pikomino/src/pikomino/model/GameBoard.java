@@ -10,6 +10,8 @@ public class GameBoard {
 	private ArrayList<Player> players = new ArrayList<Player>();
 	private int actualPlayer = 0;
 	
+	public GameBoard(){}
+	
 	public GameBoard(int np){
 		try{
 			if(np >=2 && np <=7){
