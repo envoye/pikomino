@@ -1,4 +1,4 @@
-package pikomino;
+package pikomino.model;
 
 public class Dice {
 	private int dieId;
@@ -43,7 +43,9 @@ public class Dice {
 
 	// CAUTION: Testing in progress...
 	public void diceRoll(){
-//		for(int i = 0; i < )
+		for(int i = 0; i < 8; i++){
+			
+		}
 	}
 	
 }
