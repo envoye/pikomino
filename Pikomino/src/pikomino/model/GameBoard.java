@@ -9,6 +9,10 @@ public class GameBoard {
 	//private Barbecue barbecue;
 	private ArrayList<Player> players = new ArrayList<Player>();
 	private int actualPlayer = 0;
+	// Arrays suited for using the Dice Class	
+	private Dice[] playableDice;
+	private Dice[] playedDice;
+
 	
 	public GameBoard(ArrayList<String> names) throws Exception{
 		if(n_players == names.size()){
@@ -44,8 +48,38 @@ public class GameBoard {
 		}
 	}
 	
+	public Dice[] getPlayableDice(){
+		return this.playableDice;
+	}
 	
+	public Dice[] getPlayedDice(){
+		return this.playedDice;
+	}
+
+	public int rollDie(){
+		return (int) (Math.random() * 6) + 1;
+	}
+
+	public void rollDice(){
+		for(int diceCounter = 0; diceCounter < 8; diceCounter++){
+			if (this.playableDice[diceCounter].getDieId() != 0)
+				this.playableDice[diceCounter].setDieFaceValue(rollDie());
+		}
+	}
+
+	public void selectedDice(){
+		for(int diceCounter = 0; diceCounter < 8; diceCounter++){
+			if (this.playedDice[diceCounter].getDieId() != 0)
+				this.playedDice[diceCounter].setDieFaceValue(rollDie());
+		}
+	}
 	
-	
-	
+	public int getTotalDicePlayed(){
+		int diceTotal = 0;
+		for (int diceCounter = 0; diceCounter < 8; diceCounter++){
+			diceTotal += this.playedDice[diceCounter].getDieFaceValue(); 
+		}
+		return diceTotal;
+	}
+
 }
