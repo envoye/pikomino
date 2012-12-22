@@ -1,3 +1,4 @@
+package pikomino.model;
 import java.util.ArrayList;
 
 
@@ -15,7 +16,7 @@ public class GameBoard {
 		
 	}
 	
-	public void selectPiece()
+	
 	
 	
 	
