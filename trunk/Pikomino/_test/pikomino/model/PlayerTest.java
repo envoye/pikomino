@@ -1,0 +1,43 @@
+package pikomino.model;
+
+import static org.junit.Assert.*;
+
+import org.junit.After;
+import org.junit.AfterClass;
+import org.junit.Before;
+import org.junit.BeforeClass;
+import org.junit.Test;
+
+public class PlayerTest {
+	
+	@BeforeClass
+	public static void setUpBeforeClass() throws Exception {
+		 
+	}
+
+	@AfterClass
+	public static void tearDownAfterClass() throws Exception {
+	}
+
+	@Before
+	public void setUp() throws Exception {
+	}
+
+	@After
+	public void tearDown() throws Exception {
+	}
+
+	@Test
+	public void testTotalWorms() {
+		Player p = new Player("p1");
+		p.addPiecesStack(new Piece(22));
+		
+		assertArrayEquals(expecteds, actuals)
+	}
+
+	@Test
+	public void testBiggestNumber() {
+		fail("Not yet implemented");
+	}
+
+}
