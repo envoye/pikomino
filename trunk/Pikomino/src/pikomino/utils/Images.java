@@ -9,31 +9,8 @@ import javax.imageio.ImageIO;
 
 public class Images {
 	public static HashMap<Integer, BufferedImage> diceImages = new HashMap<Integer, BufferedImage>();
+	public static HashMap<Integer, BufferedImage> piecesImages = new HashMap<Integer, BufferedImage>();
 	
-//    public static BufferedImage imageDieWorm = null;
-//    public static BufferedImage imageDie5 = null;
-//    public static BufferedImage imageDie4 = null;
-//    public static BufferedImage imageDie3 = null;
-//    public static BufferedImage imageDie1 = null;
-//    public static BufferedImage imageDie2 = null;
-    
-//    public static BufferedImage ImagemPeca21 = null;
-//    public static BufferedImage ImagemPeca22 = null;
-//    public static BufferedImage ImagemPeca23 = null;
-//    public static BufferedImage ImagemPeca24 = null;
-//    public static BufferedImage ImagemPeca25 = null;
-//    public static BufferedImage ImagemPeca26 = null;
-//    public static BufferedImage ImagemPeca27 = null;
-//    public static BufferedImage ImagemPeca28 = null;
-//    public static BufferedImage ImagemPeca29 = null;
-//    public static BufferedImage ImagemPeca30 = null;
-//    public static BufferedImage ImagemPeca31 = null;
-//    public static BufferedImage ImagemPeca32 = null;
-//    public static BufferedImage ImagemPeca33 = null;
-//    public static BufferedImage ImagemPeca34 = null;
-//    public static BufferedImage ImagemPeca35 = null;
-//    public static BufferedImage ImagemPeca36 = null;
-
     static {
         try {
 
@@ -43,29 +20,29 @@ public class Images {
             diceImages.put(3, ImageIO.read(new File("resources\\Images\\Dice\\Die3.png")));
             diceImages.put(2, ImageIO.read(new File("resources\\Images\\Dice\\Die2.png")));
             diceImages.put(1, ImageIO.read(new File("resources\\Images\\Dice\\Die1.png")));
-    
-//            ImagemPeca21 = ImageIO.read(new File("Images\\Peca21.png"));
-//            ImagemPeca22 = ImageIO.read(new File("Images\\Peca22.png"));
-//            ImagemPeca23 = ImageIO.read(new File("Images\\Peca23.png"));
-//            ImagemPeca24 = ImageIO.read(new File("Images\\Peca24.png"));
-//            ImagemPeca25 = ImageIO.read(new File("Images\\Peca25.png"));
-//            ImagemPeca26 = ImageIO.read(new File("Images\\Peca26.png"));
-//            ImagemPeca27 = ImageIO.read(new File("Images\\Peca27.png"));
-//            ImagemPeca28 = ImageIO.read(new File("Images\\Peca28.png"));
-//            ImagemPeca29 = ImageIO.read(new File("Images\\Peca29.png"));
-//            ImagemPeca30 = ImageIO.read(new File("Images\\Peca30.png"));
-//            ImagemPeca31 = ImageIO.read(new File("Images\\Peca31.png"));
-//            ImagemPeca32 = ImageIO.read(new File("Images\\Peca32.png"));
-//            ImagemPeca33 = ImageIO.read(new File("Images\\Peca33.png"));
-//            ImagemPeca34 = ImageIO.read(new File("Images\\Peca34.png"));
-//            ImagemPeca35 = ImageIO.read(new File("Images\\Peca35.png"));
-//            ImagemPeca36 = ImageIO.read(new File("Images\\Peca36.png"));
             
-            
+            piecesImages.put(20, ImageIO.read(new File("resources\\Images\\Pieces\\PieceBack.png")));
+            piecesImages.put(21, ImageIO.read(new File("resources\\Images\\Pieces\\Piece21.png")));
+            piecesImages.put(22, ImageIO.read(new File("resources\\Images\\Pieces\\Piece22.png")));
+            piecesImages.put(23, ImageIO.read(new File("resources\\Images\\Pieces\\Piece23.png")));
+            piecesImages.put(24, ImageIO.read(new File("resources\\Images\\Pieces\\Piece24.png")));
+            piecesImages.put(25, ImageIO.read(new File("resources\\Images\\Pieces\\Piece25.png")));
+            piecesImages.put(26, ImageIO.read(new File("resources\\Images\\Pieces\\Piece26.png")));
+            piecesImages.put(27, ImageIO.read(new File("resources\\Images\\Pieces\\Piece27.png")));
+            piecesImages.put(28, ImageIO.read(new File("resources\\Images\\Pieces\\Piece28.png")));
+            piecesImages.put(29, ImageIO.read(new File("resources\\Images\\Pieces\\Piece29.png")));
+            piecesImages.put(30, ImageIO.read(new File("resources\\Images\\Pieces\\Piece30.png")));
+            piecesImages.put(31, ImageIO.read(new File("resources\\Images\\Pieces\\Piece31.png")));
+            piecesImages.put(32, ImageIO.read(new File("resources\\Images\\Pieces\\Piece32.png")));
+            piecesImages.put(33, ImageIO.read(new File("resources\\Images\\Pieces\\Piece33.png")));
+            piecesImages.put(34, ImageIO.read(new File("resources\\Images\\Pieces\\Piece34.png")));
+            piecesImages.put(35, ImageIO.read(new File("resources\\Images\\Pieces\\Piece35.png")));
+            piecesImages.put(36, ImageIO.read(new File("resources\\Images\\Pieces\\Piece36.png")));
+                   
 
 }
 catch (IOException e) {
-	System.out.println("Aki");
+	System.out.println("Error on upload images!");
         }
     }
 
