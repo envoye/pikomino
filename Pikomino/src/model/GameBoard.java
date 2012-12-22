@@ -10,6 +10,13 @@ public class GameBoard {
 	public GameBoard(){
 		
 	}
+
+	public void changeNextPlayer(){
+		
+	}
+	
+	public void selectPiece()
+	
 	
 	
 }
