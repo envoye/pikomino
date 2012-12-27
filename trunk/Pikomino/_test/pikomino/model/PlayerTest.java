@@ -30,9 +30,9 @@ public class PlayerTest {
 	@Test
 	public void testTotalWorms() {
 		Player p = new Player("p1");
-		p.addPiecesStack(new Piece(22));
+		p.addPiecesStack(Piece.createPiece(22));
 		
-		assertArrayEquals(expecteds, actuals)
+		//assertArrayEquals(expecteds, actuals)
 	}
 
 	@Test
