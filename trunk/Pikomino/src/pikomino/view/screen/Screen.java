@@ -54,12 +54,13 @@ public class Screen {
         gBuffered.drawRect(0 , 450 , 380, 150);
         for(int i = 0; i< Math.min(dices.size(),8) ; i++)
         {
-        	gBuffered.drawImage(Images.getImageOf(dices.get(i)), 30 + (i%4)*87 , 460 +  70 * (i/4) , 60, 60, null);
+        	gBuffered.drawImage(Images.diceImages.get(1), 30 + (i%4)*87 , 460 +  70 * (i/4) , 60, 60, null);
         }
         gBuffered.drawRect(620 , 0 , 179, 600);
         gBuffered.drawRect(380 , 300 , 240, 300);
-        gBuffered.drawString("ola", 625, 300);
+        //gBuffered.drawString("ola", 625, 300);
         gBuffered.setStroke(new BasicStroke(2,BasicStroke.CAP_ROUND,BasicStroke.JOIN_ROUND));
+        
         for(int i = 0; i< 7 ; i++)
         {
         	gBuffered.setColor(Color.black);
@@ -77,11 +78,31 @@ public class Screen {
         	gBuffered.drawString("14", 740, 85*i+80);
         }
         
-        for(int i = 0; i< dices.size() ; i++)
+        /*for(int i = 0; i< dices.size() ; i++)
         {
         	
         	gBuffered.drawImage(Images.getImageOf(dices.get(i)), 30 + (i%4)*87 , 460 +  70 * (i/4) , 60, 60, null);
-        }
+        }*/
+        
+        
+        gBuffered.setColor(Color.black);
+    	gBuffered.drawRect(390 ,320, 70, 40);
+    	gBuffered.setColor(new Color(122,122,122,122));
+    	gBuffered.fillRect(390 ,320, 70, 40);
+    	gBuffered.setColor(Color.black);
+    	gBuffered.drawString("Roll", 415, 345);
+        
+        gBuffered.drawImage(Images.getImageOf(pieces.get(1)), 470, 320, 50, 80, null);
+        gBuffered.setColor(Color.black);
+    	gBuffered.drawString("Kevin", 550, 330);
+    	gBuffered.drawString("Biggest", 550, 450);
+    	gBuffered.drawString("22", 550, 475);
+    	gBuffered.drawString("Worms", 550, 500);
+    	gBuffered.drawString("14", 550, 525);
+        
+    	
+    	gBuffered.drawString("Dice points", 390, 500);
+    	gBuffered.drawString("24", 390, 525);
 	}
 
 
