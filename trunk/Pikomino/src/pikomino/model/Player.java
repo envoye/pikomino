@@ -3,6 +3,7 @@ package pikomino.model;
 import java.util.Stack;
 
 public class Player {
+	
 	private String name;
 	private Stack<Piece> piecesStack;
 		
@@ -71,6 +72,6 @@ public class Player {
 	}
 	
 	public Piece getTopPiece(){
-		return piecesStack.lastElement();
+		return piecesStack.peek();
 	}
 }
