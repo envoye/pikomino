@@ -47,20 +47,18 @@ public class Screen {
 					40 + (i % 8) * 70, 25 + 140 * (i / 8), 50, 100, null);
 		}
 
-		List<Dice> dices = model.getPlayableDice();
+		List<Dice> playableDices = model.getPlayableDice();
 		gBuffered.drawRect(0, 300, 380, 150);
-		for (int i = 0; i < dices.size(); i++) {
-			gBuffered.drawImage(Images.getImageOf(dices.get(i)),
+		for (int i = 0; i < playableDices.size(); i++) {
+			gBuffered.drawImage(Images.getImageOf(playableDices.get(i)),
 					30 + (i % 4) * 87, 310 + 70 * (i / 4), 60, 60, null);
 		}
 
-		List<Dice> dices_ = model.getPlayedDice();
+		List<Dice> playedDices = model.getPlayedDice();
 		gBuffered.drawRect(0, 450, 380, 150);
-		for (int i = 0; i < Math.min(dices_.size(), 8); i++) {
-			gBuffered.drawImage(Images.getImageOf(dices_.get(i)),
+		for (int i = 0; i < Math.min(playedDices.size(), 8); i++) {
+			gBuffered.drawImage(Images.getImageOf(playedDices.get(i)),
 					30 + (i % 4) * 87, 460 + 70 * (i / 4), 60, 60, null);
-			gBuffered.drawImage(Images.diceImages.get(1), 30 + (i % 4) * 87,
-					460 + 70 * (i / 4), 60, 60, null);
 		}
 
 		gBuffered.drawRect(620, 0, 179, 600);
@@ -122,14 +120,23 @@ public class Screen {
 	
 	public void clickRato(int x, int y) {
 		
-		//System.out.println(x + "-" +y);
+		System.out.println(x + "-" +y);
 		
 		//Button "Roll" pressed
 		if(x > 390 && x < 459 && y > 320 && y < 359)
 		{
 			model.rollDice();
-			
 			return;
+		}
+		
+		for (int i = 0; i < model.getPlayableDice().size(); i++) {
+			
+			if(x > (30 + (i % 4) * 87) && x < (90 + (i % 4) * 87) && y > (310 + 70 * (i / 4)) && y < (370 + 70 * (i / 4)))
+			{
+				model.moveDiceToPlayedList(i);
+				System.out.println(i);
+				return;
+			}
 		}
 		
 	}

@@ -23,10 +23,9 @@ public class PikominoFrame extends JFrame implements Observer {
 		this.model = model;
 		this.setTitle("Pikomino");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 800+16, 600+38);
+		setBounds(100, 100, 806, 628);
 		
 		gamePanel = new JPanel();
-		gamePanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(gamePanel);
 		gamePanel.setLayout(new CardLayout(0, 0));
 		gamePanel.add(new GamePanel(model), BorderLayout.CENTER);

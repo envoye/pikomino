@@ -41,6 +41,14 @@ public class Model extends Observable {
 		setChanged();
 		notifyObservers();
 	}
+	
+	public void moveDiceToPlayedList(int index) {
+		
+		gameBoard.moveDiceToPlayedList(index);
+
+		setChanged();
+		notifyObservers();
+	}
 
 	public ArrayList<Dice> getPlayableDice() {
 		return gameBoard.getPlayableDice();
