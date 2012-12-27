@@ -12,7 +12,11 @@ import pikomino.model.Model;
  *
  */
 public abstract class State implements Serializable {
-    
+  	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -4132701446815438976L;
+	
 	protected Model pikominoModel;
 	
     public State(Model pikominoModel) {
