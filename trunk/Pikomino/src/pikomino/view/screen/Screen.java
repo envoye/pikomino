@@ -7,6 +7,9 @@ import java.awt.Graphics2D;
 import java.awt.geom.Rectangle2D;
 import java.util.List;
 
+import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
+
 import pikomino.model.Dice;
 import pikomino.model.Model;
 import pikomino.model.Piece;
@@ -67,6 +70,7 @@ public class Screen {
         	if(model.getPlayers().get(i).getPiecesStack().size()!=0)
         		gBuffered.drawImage(Images.getImageOf(model.getPlayers().get(i).getTopPiece()), 626, 5+85*i, 50, 80, null);
         	
+        	
         	gBuffered.setColor(Color.black);
         	gBuffered.drawString(model.getPlayers().get(i).getName(), 680, 85*i+20);
         	gBuffered.drawString("Biggest", 740, 85*i+20);
@@ -108,4 +112,9 @@ public class Screen {
 		this.heightScreen = heightScreen;
 	}
 	
-}
+	
+	 
+
+	 }
+
+
