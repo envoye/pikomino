@@ -2,6 +2,7 @@ package pikomino.view.screen;
 
 import java.awt.BasicStroke;
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics2D;
 import java.awt.geom.Rectangle2D;
 import java.util.List;
@@ -65,6 +66,15 @@ public class Screen {
         	gBuffered.drawRect(626 ,5+ 85*i, 168, 80);
         	gBuffered.setColor(new Color(122,122,122,122));
         	gBuffered.fillRect(626 ,5+ 85*i, 168, 80);
+        	
+        	gBuffered.drawImage(Images.getImageOf(pieces.get(i)), 626, 5+85*i, 50, 80, null);
+        	
+        	gBuffered.setColor(Color.black);
+        	gBuffered.drawString("Kevin", 680, 85*i+20);
+        	gBuffered.drawString("Biggest", 740, 85*i+20);
+        	gBuffered.drawString("22", 740, 85*i+40);
+        	gBuffered.drawString("Worms", 740, 85*i+60);
+        	gBuffered.drawString("14", 740, 85*i+80);
         }
         
         for(int i = 0; i< dices.size() ; i++)
