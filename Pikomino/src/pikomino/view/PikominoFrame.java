@@ -2,8 +2,11 @@ package pikomino.view;
 
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
@@ -27,8 +30,25 @@ public class PikominoFrame extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(new CardLayout(0, 0));
 		contentPane.add(new GamePanel(model), BorderLayout.CENTER);
+		this.setResizable(false);
+		
+		//contentPane.addMouseListener(new BoardListener());
 	}
 	
-	
-	
+	/*
+	 class BoardListener extends MouseAdapter {
+		 
+	        public void mousePressed( MouseEvent e){
+	            //Botão rodar
+	        	if(getX()>=390 && e.getX()<=390+70 && e.getY()>=320 && e.getY()<=320+40){
+	        		JOptionPane.showInternalMessageDialog(null, "Roll");
+	        		
+	        		return;
+	        	}
+	         
+	        	JOptionPane.showInternalMessageDialog(null, "Roll");
+	        }
+	        
+	    }
+	    */
 }
