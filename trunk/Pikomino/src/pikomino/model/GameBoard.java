@@ -4,15 +4,10 @@ import java.util.ArrayList;
 
 public class GameBoard {
 	private int n_players=2;
-	private int actualplayer = -1;
+	private int actualPlayer = -1;
 	
-	private Dice dice;
 	//private Barbecue barbecue;
 	private ArrayList<Player> players = new ArrayList<Player>();
-	private int actualPlayer = 0;
-	// Arrays suited for using the Dice Class	
-	//private Dice[] playableDice;
-	//private Dice[] playedDice;
 	private ArrayList<Dice> playableDice= new ArrayList<Dice>();
 	private ArrayList<Dice> playedDice = new ArrayList<Dice>();
 	private ArrayList<Piece> pieces = new ArrayList<Piece>();
@@ -27,6 +22,7 @@ public class GameBoard {
 			throw new Exception("Erro lista de nomes!");
 		}
 		createPices();
+		createPlayableDice();
 	}
 	
 	public GameBoard(int np, ArrayList<String> names) throws Exception{
@@ -45,6 +41,38 @@ public class GameBoard {
 		}
 	}
 
+	public int getN_players() {
+		return n_players;
+	}
+
+	public void setN_players(int n_players) {
+		this.n_players = n_players;
+	}
+
+	public int getActualPlayer() {
+		return actualPlayer;
+	}
+
+	public void setActualPlayer(int actualPlayer) {
+		this.actualPlayer = actualPlayer;
+	}
+
+	public ArrayList<Player> getPlayers() {
+		return players;
+	}
+
+	public void setPlayers(ArrayList<Player> players) {
+		this.players = players;
+	}
+
+	public void setPlayableDice(ArrayList<Dice> playableDice) {
+		this.playableDice = playableDice;
+	}
+
+	public void setPlayedDice(ArrayList<Dice> playedDice) {
+		this.playedDice = playedDice;
+	}
+
 	public void changeNextPlayer(){
 		if((actualPlayer+1)>=n_players){
 			actualPlayer=0;
@@ -60,7 +88,6 @@ public class GameBoard {
 	public ArrayList<Dice> getPlayedDice(){
 		return this.playedDice;
 	}
-
 	
 	public ArrayList<Piece> getPieces() {
 		return pieces;
@@ -70,14 +97,15 @@ public class GameBoard {
 		this.pieces = pieces;
 	}
 
-	public int rollDie(){
-		return (int) (Math.random() * 6) + 1;
+	public Player getCurrentPlayer(){
+		return players.get(actualPlayer);
 	}
+	
 
 	public void rollDice(){
 		// X for die
 		for(Dice x : playableDice){
-			if (x.getDieId() != 0)
+//			if (x.getDieId() != 0)
 				x.setDieFaceValue(rollDie());
 		}
 	}
@@ -85,7 +113,7 @@ public class GameBoard {
 	public void selectedDice(){
 		// X for die
 		for(Dice x : playedDice){
-			if (x.getDieId() != 0)
+//			if (x.getDieId() != 0)
 				x.setDieFaceValue(rollDie());
 		}
 	}
@@ -102,15 +130,26 @@ public class GameBoard {
 	
 	public void takePiece(Piece piece){
 		pieces.remove(piece);
-		players.get(actualplayer).addPiecesStack(piece);
+		players.get(actualPlayer).addPiecesStack(piece);
 		
 	}
 	
 	public void returnPiece(){
-		Piece piece = players.get(actualplayer).takePiecesStack();
+		Piece piece = players.get(actualPlayer).takePiecesStack();
 		addPieceToBoard(piece);
 		pieces.remove(pieces.size()-1);
 		
+	}
+	
+	public void moveDiceToPlayedList(int index){
+		Dice die_toRemove = new Dice(playableDice.get(index));
+
+		for(Dice x : playedDice){
+			if(die_toRemove.getDieFaceValue()== x.getDieFaceValue()){
+				playableDice.remove(x);
+				playedDice.add(die_toRemove);
+			}		
+		}
 	}
 	
 	private void addPieceToBoard(Piece p){
@@ -129,9 +168,18 @@ public class GameBoard {
 	}
 	
 	private void createPices(){	
-			for(int i=21; i<37; i++)
-				pieces.add(Piece.createPiece(i));
+		for(int i=21; i<37; i++)
+			pieces.add(Piece.createPiece(i));
 		
 	}
 
+	private void createPlayableDice(){
+		for(int i =0; i<8; i++){
+			playableDice.add(new Dice(rollDie()));
+		}
+	}
+	
+	private int rollDie(){
+		return (int) (Math.random() * 6) + 1;
+	}
 }
