@@ -141,10 +141,11 @@ public class GameBoard {
 	public void moveDiceToPlayedList(int index) {
 		Dice die_toRemove = new Dice(playableDice.get(index));
 
-		for (Dice x : playedDice) {
-			if (die_toRemove.getDieFaceValue() == x.getDieFaceValue()) {
-				playableDice.remove(x);
+		for (int i = 0 ; i < playableDice.size() ; i++) {
+			if (die_toRemove.getDieFaceValue() == playableDice.get(i).getDieFaceValue()) {
+				playableDice.remove(i);
 				playedDice.add(die_toRemove);
+				i--;
 			}
 		}
 	}
