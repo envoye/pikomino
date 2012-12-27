@@ -45,7 +45,7 @@ public class GamePanel extends JPanel {
         BufferedImage bimage = gc.createCompatibleImage(widthScreen, heightScreen, Transparency.OPAQUE);
         Graphics2D gBuffered = bimage.createGraphics();
         
-        g.setColor(Color.white);
+        g.setColor(new Color(12,117,24));
         g.fillRect(0,0,getWidth(),getHeight());
         
 //        gBuffered.setColor(Color.red);
