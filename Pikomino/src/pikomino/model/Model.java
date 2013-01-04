@@ -4,21 +4,19 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Observable;
 
+
+/**
+ * This class serves the purpose of encapsulating all the data (GameBoard) and warn the observers
+ * when something is changed; its the Model in the MVC pattern.
+ *
+ */
 public class Model extends Observable {
 	private GameBoard gameBoard;
 
 	public Model(GameBoard gameBoard) {
+		
 		this.gameBoard = gameBoard;
 
-		String staticPlayers[] = { "Player1", "Player2", "Player3", "Player4",
-				"Player5", "Player6", "Player7" };
-		ArrayList<Player> players = new ArrayList<Player>();
-		for (String x : staticPlayers) {
-			Player p = new Player(x);
-			players.add(p);
-		}
-		gameBoard.setPlayers(players);
-		// Avisa os Observers da modificação
 		setChanged();
 		notifyObservers();
 	}
@@ -49,6 +47,10 @@ public class Model extends Observable {
 		setChanged();
 		notifyObservers();
 	}
+	
+	public int getTotalDicePlayed() {
+		return gameBoard.getTotalDicePlayed();
+	}
 
 	public ArrayList<Dice> getPlayableDice() {
 		return gameBoard.getPlayableDice();
@@ -60,6 +62,10 @@ public class Model extends Observable {
 
 	public ArrayList<Player> getPlayers() {
 		return gameBoard.getPlayers();
+	}
+	
+	public int getActualPlayer() {
+		return gameBoard.getActualPlayerID();
 	}
 
 }

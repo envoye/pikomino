@@ -13,11 +13,21 @@ import javax.swing.border.EmptyBorder;
 
 import pikomino.model.Model;
 
+
+/**
+ * This class represents the actual window of the game, it has an GamePanel.
+ * In junction with the GamePanel and Screen class represents the Vision of the MVC.
+ *
+ */
 public class PikominoFrame extends JFrame implements Observer {
 
 	private Model model;
 	private JPanel gamePanel;
 	
+	/**
+	 * This class represents the actual window of the game
+	 * @param model its the data model
+	 */
 	public PikominoFrame(Model model) {
 		
 		this.model = model;
@@ -36,6 +46,10 @@ public class PikominoFrame extends JFrame implements Observer {
 		
 	}
 
+	
+	/* (non-Javadoc)
+	 * @see java.util.Observer#update(java.util.Observable, java.lang.Object)
+	 */
 	@Override
 	public void update(Observable o, Object arg) {
 

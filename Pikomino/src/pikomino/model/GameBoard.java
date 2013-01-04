@@ -2,57 +2,47 @@ package pikomino.model;
 
 import java.util.ArrayList;
 
+import javax.naming.directory.InvalidAttributesException;
+
+/**
+ * This class represents all the data inside a gameboard.
+ *
+ */
 public class GameBoard {
-	private int n_players = 2;
-	private int actualPlayer = -1;
+	private int actualPlayerID = 0;
 
 	private ArrayList<Player> players = new ArrayList<Player>();
 	private ArrayList<Dice> playableDice = new ArrayList<Dice>();
 	private ArrayList<Dice> playedDice = new ArrayList<Dice>();
 	private ArrayList<Piece> pieces = new ArrayList<Piece>();
 
-	public GameBoard(String... names) throws Exception {
-		if (n_players == names.length) {
-			for (int i = 0; i < n_players; i++) {
-				players.add(new Player(names[i]));
-			}
-		} else {
-			throw new Exception("Erro lista de nomes!");
+	public GameBoard(String... names) {
+		
+		if (!(names.length >= 2 && names.length <= 7))
+			throw new IllegalArgumentException("Number of players not allowed!!");
+		
+		for (int i = 0; i < names.length; i++) {
+			players.add(new Player(names[i]));
 		}
 		createPices();
 		createPlayableDice();
 	}
 
-	public GameBoard(int np, ArrayList<String> names) throws Exception {
-		if (np >= 2 && np <= 7) {
-			n_players = np;
-		} else {
-			throw new Exception("Number of players not allowed!!");
-		}
-
-		if (n_players == names.size()) {
-			for (int i = 0; i < n_players; i++) {
-				players.add(new Player(names.get(i)));
-			}
-		} else {
-			throw new Exception("Erro lista de nomes!");
-		}
-	}
 
 	public int getN_players() {
-		return n_players;
+		return players.size();
+	}
+	
+	public Player getActualPlayer() {
+		return players.get(actualPlayerID);
 	}
 
-	public void setN_players(int n_players) {
-		this.n_players = n_players;
-	}
-
-	public int getActualPlayer() {
-		return actualPlayer;
+	public int getActualPlayerID() {
+		return actualPlayerID;
 	}
 
 	public void setActualPlayer(int actualPlayer) {
-		this.actualPlayer = actualPlayer;
+		this.actualPlayerID = actualPlayer;
 	}
 
 	public ArrayList<Player> getPlayers() {
@@ -72,10 +62,10 @@ public class GameBoard {
 	}
 
 	public void changeNextPlayer() {
-		if ((actualPlayer + 1) >= n_players) {
-			actualPlayer = 0;
+		if ( actualPlayerID + 1 >= players.size() ) {
+			actualPlayerID = 0;
 		} else {
-			actualPlayer++;
+			actualPlayerID++;
 		}
 	}
 
@@ -86,7 +76,7 @@ public class GameBoard {
 	public ArrayList<Dice> getPlayedDice() {
 		return this.playedDice;
 	}
-
+	
 	public ArrayList<Piece> getPieces() {
 		return pieces;
 	}
@@ -96,7 +86,7 @@ public class GameBoard {
 	}
 
 	public Player getCurrentPlayer() {
-		return players.get(actualPlayer);
+		return players.get(actualPlayerID);
 	}
 
 	public void rollDice() {
@@ -107,13 +97,13 @@ public class GameBoard {
 		}
 	}
 
-	public void selectedDice() {
-		// X for die
-		for (Dice x : playedDice) {
-			// if (x.getDieId() != 0)
-			x.setDieFaceValue(rollDie());
-		}
-	}
+//	public void selectedDice() {
+//		// X for die
+//		for (Dice x : playedDice) {
+//			// if (x.getDieId() != 0)
+//			x.setDieFaceValue(rollDie());
+//		}
+//	}
 
 	public int getTotalDicePlayed() {
 		int diceTotal = 0;
@@ -127,12 +117,12 @@ public class GameBoard {
 
 	public void takePiece(Piece piece) {
 		pieces.remove(piece);
-		players.get(actualPlayer).addPiecesStack(piece);
+		players.get(actualPlayerID).addPiecesStack(piece);
 
 	}
 
 	public void returnPiece() {
-		Piece piece = players.get(actualPlayer).takePiecesStack();
+		Piece piece = players.get(actualPlayerID).takePiecesStack();
 		addPieceToBoard(piece);
 		pieces.remove(pieces.size() - 1);
 
@@ -174,7 +164,7 @@ public class GameBoard {
 
 	private void createPlayableDice() {
 		for (int i = 0; i < 8; i++) {
-			playableDice.add(new Dice(rollDie()));
+			playableDice.add(Dice.createDice(rollDie()));
 		}
 	}
 

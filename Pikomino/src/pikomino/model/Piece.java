@@ -1,12 +1,22 @@
 package pikomino.model;
 
+import java.rmi.UnexpectedException;
+
+/**
+ * This class represents a Piece in the game, to create a piece use Piece.createPiece(int value).
+ *
+ */
 public class Piece {
-	int value = 0;
-	int wormValue = 0;
+	
+	private int value = 0;
 		
+	/**
+	 * Creates an Piece object if the value is valid, otherwise throws an IllegalArgumentException.
+	 *
+	 */
 	public static Piece createPiece(int value){
 		if(value<20 || value>36)
-			throw new IllegalArgumentException();
+			throw new IllegalArgumentException("Invalid Piece Value");
 		
 		return new Piece(value); 
 			
@@ -14,7 +24,7 @@ public class Piece {
 	
 	private Piece(int value) {
 		super();
-		setValue(value);	
+		this.value = value;	
 	}
 
 	public int getValue() {
@@ -22,23 +32,26 @@ public class Piece {
 	}
 	
 	public int getWormValue() {
-		return wormValue;
-	}
-	
-	private void setValue(int value) {
-			this.value = value;
-			
-			if(value == 20){
-				this.wormValue = 0;
-			}else if(value <25){
-				this.wormValue = 1;
-			}else if(value <29){
-				this.wormValue = 2;
-			}else if(value <33){
-				this.wormValue = 3;
-			}else{
-				this.wormValue = 4;
+		
+		if(value < 20 || value > 36)
+		{
+			try {
+				throw new IllegalAccessException("Piece should not hava this value: " + value);
+			} catch (IllegalAccessException e) {
+				e.printStackTrace();
 			}
+		}
+		
+		if(value <25){
+			return 1;
+		}else if(value <29){
+			return 2;
+		}else if(value <33){
+			return 3;
+		}else{
+			return 4;
+		}
+		
 	}
 	
 }

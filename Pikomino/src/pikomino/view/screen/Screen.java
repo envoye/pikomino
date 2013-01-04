@@ -14,9 +14,21 @@ import javax.swing.JOptionPane;
 import pikomino.model.Dice;
 import pikomino.model.Model;
 import pikomino.model.Piece;
+import pikomino.model.Player;
 import pikomino.utils.Images;
 import pikomino.view.GamePanel;
 
+/**
+ * This class represents the screen of the game, this class paints the information
+ * that will be presented by the game panel.
+ * 
+ * In junction with the PikominoFrame and Screen class represents the Vision and
+ * Control of the MVC.
+ * 
+ * In the next version there will be a few more screens
+ * for the menus, configurations etc.
+ *
+ */
 public class Screen {
 
 	protected GamePanel gamePanel;
@@ -37,7 +49,7 @@ public class Screen {
 		gBuffered.setColor(Color.black);
 		gBuffered.setStroke(new BasicStroke(5, BasicStroke.CAP_ROUND,
 				BasicStroke.JOIN_ROUND));
-		gBuffered.drawImage(Images.background, 0, 0, widthScreen, heightScreen,
+		gBuffered.drawImage(Images.getBackground(), 0, 0, widthScreen, heightScreen,
 				null);
 
 		List<Piece> pieces = model.getPieces();
@@ -94,17 +106,21 @@ public class Screen {
 		gBuffered.setColor(Color.black);
 		gBuffered.drawString("Roll", 415, 345);
 
-		gBuffered.drawImage(Images.getImageOf(pieces.get(1)), 470, 320, 50, 80,
-				null);
+		Player actual = model.getPlayers().get(model.getActualPlayer());
+		if(!actual.getPiecesStack().isEmpty())
+		{
+			gBuffered.drawImage(Images.getImageOf(actual.getPiecesStack().peek()), 470, 320, 50, 80,
+					null);
+		}
 		gBuffered.setColor(Color.black);
-		gBuffered.drawString("Kevin", 550, 330);
+		gBuffered.drawString(actual.getName(), 550, 330);
 		gBuffered.drawString("Biggest", 550, 450);
-		gBuffered.drawString("22", 550, 475);
+		gBuffered.drawString(String.valueOf(actual.biggestNumber()), 550, 475);
 		gBuffered.drawString("Worms", 550, 500);
-		gBuffered.drawString("14", 550, 525);
+		gBuffered.drawString(String.valueOf(actual.totalWorms()), 550, 525);
 
 		gBuffered.drawString("Dice points", 390, 500);
-		gBuffered.drawString("24", 390, 525);
+		gBuffered.drawString(String.valueOf(model.getTotalDicePlayed()), 390, 525);
 	}
 
 	public void render(Graphics2D gBuffered, int widthScreen, int heightScreen) {
@@ -120,7 +136,7 @@ public class Screen {
 	
 	public void clickRato(int x, int y) {
 		
-		System.out.println(x + "-" +y);
+		//System.out.println(x + "-" +y);
 		
 		//Button "Roll" pressed
 		if(x > 390 && x < 459 && y > 320 && y < 359)
@@ -134,7 +150,7 @@ public class Screen {
 			if(x > (30 + (i % 4) * 87) && x < (90 + (i % 4) * 87) && y > (310 + 70 * (i / 4)) && y < (370 + 70 * (i / 4)))
 			{
 				model.moveDiceToPlayedList(i);
-				System.out.println(i);
+				//System.out.println(i);
 				return;
 			}
 		}

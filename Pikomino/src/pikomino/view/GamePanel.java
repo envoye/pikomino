@@ -16,6 +16,13 @@ import javax.swing.JPanel;
 import pikomino.model.Model;
 import pikomino.view.screen.Screen;
 
+/**
+ * This class is a Panel, this panel is where all the information about the game
+ * is drawn, this information is drawn by the current screen (class Screen).
+ * In junction with the PikominoFrame and Screen class represents the Vision and
+ * Control of the MVC.
+ *
+ */
 public class GamePanel extends JPanel {
 
 	static public int widthScreen = 800;
@@ -50,9 +57,6 @@ public class GamePanel extends JPanel {
 
 		g.setColor(new Color(12, 117, 24));
 		g.fillRect(0, 0, getWidth(), getHeight());
-
-		// gBuffered.setColor(Color.red);
-		// gBuffered.fillRect(0,0,getWidth(),getHeight());
 
 		screen.render(gBuffered);
 
