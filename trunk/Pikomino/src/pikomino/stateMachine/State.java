@@ -8,12 +8,8 @@ import java.io.Serializable;
 import pikomino.model.Model;
 
 /**
- * @author Valter
- *
- */
-/**
- * @author Diogo
- *
+ * This is an abstract class to serve as an interface to the other states.
+ * 
  */
 public abstract class State {
 	
@@ -29,8 +25,8 @@ public abstract class State {
      */
     public void startState() {}
 
-	// @ the beginning of the game 
-    /**
+    /** 
+     * To be executed in the beginning of the game 
      * @return
      */
     public boolean gameStart()

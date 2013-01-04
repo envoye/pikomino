@@ -1,33 +1,36 @@
 package pikomino.model;
 
+/**
+ * This class represents a Dice in the game, to create a dice use Dice.createDice(int value).
+ *
+ */
 public class Dice {
-//	private int dieId;
+
 	private int dieFaceValue;
 	
-	//public Dice(int dieId, int dieValue){
-	public Dice(int dieValue){
+	/**
+	 * Creates an Dice object if the value is valid, otherwise throws an IllegalArgumentException.
+	 *
+	 */
+	public static Dice createDice(int value){
+		if(value<1 || value>6)
+			throw new IllegalArgumentException("Invalid Dice Value");
+		
+		return new Dice(value); 
+			
+	}
+	
+	private Dice(int dieValue){
 		this.dieFaceValue = dieValue;
 	}
 	
 	public Dice(Dice die){
 		this.dieFaceValue = die.getDieFaceValue();
 	}
-
-//	public void setDieId(int dieId){
-//		if (dieId < 1 || dieId > 8){
-//			return;
-//		}else{
-//			this.dieId = dieId;
-//		}
-//	}
-//	
-//	public int getDieId(){
-//		return this.dieId;
-//	}
 	
 	public void setDieFaceValue(int dieValue){
 		if (dieValue < 1 || dieValue > 6){
-			return;
+			throw new IllegalArgumentException("Invalid Dice Value");
 		}else{
 			this.dieFaceValue = dieValue;
 		}

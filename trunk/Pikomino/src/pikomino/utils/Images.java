@@ -10,11 +10,17 @@ import javax.imageio.ImageIO;
 import pikomino.model.Dice;
 import pikomino.model.Piece;
 
+/**
+ * This class holds all the necessary images for the game, this images are private and static, they can only be
+ * accessed by their own static functions
+ *
+ */
 public class Images {
-	public static HashMap<Integer, BufferedImage> diceImages = new HashMap<Integer, BufferedImage>();
-	public static HashMap<Integer, BufferedImage> piecesImages = new HashMap<Integer, BufferedImage>();
 	
-	public static BufferedImage background = null;
+	private static HashMap<Integer, BufferedImage> diceImages = new HashMap<Integer, BufferedImage>();
+	private static HashMap<Integer, BufferedImage> piecesImages = new HashMap<Integer, BufferedImage>();
+	
+	private static BufferedImage background = null;
 	
     static {
         try {
@@ -54,6 +60,14 @@ public class Images {
     }
 
     
+    /**
+     * The function serves the purpose of returning the correspondent image
+     * of an "visible" object in the screen, so that there is no need for the
+     * object to have any knowledge of the image and keep the MVC functional
+     * 
+     * @param object this object can be a Dice or a Piece, otherwise the function will throw a IllegalArgumentException
+     * @return the image associated to the state of the Dice/Piece
+     */
     public static BufferedImage getImageOf(Object object) {
     	
     	if(object instanceof Piece) {
@@ -66,8 +80,18 @@ public class Images {
     		return diceImages.get(((Dice)object).getDieFaceValue());
     	}
     	
-    	throw new IllegalArgumentException();
+    	throw new IllegalArgumentException("Invalid object type");
     	
     }
+
+
+	/**
+	 * This function serves the purpose of returning the background image of the game board
+	 * 
+	 * @return the image associated with the background of the game board
+	 */
+	public static BufferedImage getBackground() {
+		return background;
+	}
     
 }

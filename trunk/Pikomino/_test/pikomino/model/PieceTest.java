@@ -10,41 +10,34 @@ import org.junit.Test;
 
 public class PieceTest {
 
-		
-	@BeforeClass
-	public static void setUpBeforeClass() throws Exception {
-	}
-
-	@AfterClass
-	public static void tearDownAfterClass() throws Exception {
-	}
-
-	@Before
-	public void setUp() throws Exception {
-	}
-
-	@After
-	public void tearDown() throws Exception {
-	}
-
 	@Test
-	public void testPiece() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testGetValue() {
-		System.out.println("getValue");
+	public void test() {
+		try {
+			Piece.createPiece(23);
+			assertTrue(true);
+		} catch(IllegalArgumentException e) {
+			fail();
+		}
 	}
 	
 	@Test
-	public void testSetValue() {
-		fail("Not yet implemented");
+	public void test2() {
+		try {
+			Piece.createPiece(19);
+			fail();
+		} catch(IllegalArgumentException e) {
+			assertTrue(true);
+		}
 	}
-
+	
 	@Test
-	public void testDisable() {
-		fail("Not yet implemented");
+	public void test3() {
+		try {
+			Piece.createPiece(37);
+			fail();
+		} catch(IllegalArgumentException e) {
+			assertTrue(true);
+		}
 	}
 
 }

@@ -2,6 +2,11 @@ package pikomino.model;
 
 import java.util.Stack;
 
+
+/**
+ * This class represents a Player in the game.
+ *
+ */
 public class Player {
 	
 	private String name;
@@ -27,11 +32,6 @@ public class Player {
 	}
 
 
-	public void setPiecesStack(Stack<Piece> piecesStack) {
-		this.piecesStack = piecesStack;
-	}
-
-
 	public int totalWorms(){
 		if(isPSEmpty())
 			return 0;
@@ -39,7 +39,7 @@ public class Player {
 		int sum=0;
 		// X for Piece
 		for(Piece x : piecesStack){
-			sum+=x.getValue();
+			sum+=x.getWormValue();
 		}
 		
 		return sum;
