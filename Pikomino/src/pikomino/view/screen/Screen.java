@@ -2,6 +2,7 @@ package pikomino.view.screen;
 
 import java.awt.BasicStroke;
 import java.awt.Color;
+import java.awt.Cursor;
 import java.awt.Desktop;
 import java.awt.Graphics2D;
 import java.awt.event.ActionEvent;
@@ -14,6 +15,7 @@ import javax.swing.JButton;
 import javax.swing.JOptionPane;
 
 import pikomino.model.Dice;
+import pikomino.model.GameBoard;
 import pikomino.model.Model;
 import pikomino.model.Piece;
 import pikomino.model.Player;
@@ -274,10 +276,12 @@ public class Screen {
 			
 			if(x > (30 + (i % 4) * 87) && x < (90 + (i % 4) * 87) && y > (310 + 70 * (i / 4)) && y < (370 + 70 * (i / 4)))
 			{
+				gamePanel.setCursor(new Cursor(Cursor.HAND_CURSOR));
 				saveddice=i;
 				return;
 			}
 		}
+		gamePanel.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
 		saveddice=-1;
 		
 	}
