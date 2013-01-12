@@ -2,17 +2,13 @@ package pikomino.view.screen;
 
 import java.awt.BasicStroke;
 import java.awt.Color;
-import java.awt.Desktop;
 import java.awt.Font;
 import java.awt.Graphics2D;
 import java.awt.geom.Rectangle2D;
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
 import javax.swing.JOptionPane;
 
 import pikomino.model.Dice;
@@ -35,10 +31,6 @@ import pikomino.view.GamePanel;
  */
 public class Screen {
 
-	private static  boolean buttonsair = true;
-	private static  boolean buttonhelp = true;
-	private static  boolean buttonrodar = true;
-	
 	protected GamePanel gamePanel;
 	protected Model model;
 	protected int widthScreen, heightScreen;
@@ -61,36 +53,40 @@ public class Screen {
 				null);
 
 		List<Piece> pieces = model.getPieces();
-		gBuffered.drawRect(0, 0, 620, 300);
+		//gBuffered.drawRect(0, 0, 620, 300);
 		for (int i = 0; i < pieces.size(); i++) {
 			gBuffered.drawImage(Images.getImageOf(pieces.get(i)),
 					40 + (i % 8) * 70, 25 + 140 * (i / 8), 50, 100, null);
 		}
 
 		List<Dice> playableDices = model.getPlayableDice();
-		gBuffered.drawRect(0, 300, 380, 150);
+		//gBuffered.drawRect(0, 300, 380, 150);
 		for (int i = 0; i < playableDices.size(); i++) {
 			gBuffered.drawImage(Images.getImageOf(playableDices.get(i)),
 					30 + (i % 4) * 87, 310 + 70 * (i / 4), 60, 60, null);
 		}
 
 		List<Dice> playedDices = model.getPlayedDice();
-		gBuffered.drawRect(0, 450, 380, 150);
+		//gBuffered.drawRect(0, 450, 380, 150);
 		for (int i = 0; i < Math.min(playedDices.size(), 8); i++) {
 			gBuffered.drawImage(Images.getImageOf(playedDices.get(i)),
 					30 + (i % 4) * 87, 460 + 70 * (i / 4), 60, 60, null);
 		}
 
-		gBuffered.drawRect(620, 0, 179, 600);
-		gBuffered.drawRect(380, 300, 240, 300);
-		gBuffered.setStroke(new BasicStroke(2, BasicStroke.CAP_ROUND,
+		//gBuffered.drawRect(620, 0, 179, 600);
+		//gBuffered.drawRect(380, 300, 240, 300);
+		gBuffered.setStroke(new BasicStroke(1, BasicStroke.CAP_ROUND,
 				BasicStroke.JOIN_ROUND));
 
 		for (int i = 0; i < model.getPlayers().size(); i++) {
-			gBuffered.setColor(Color.black);
+			gBuffered.setColor(new Color(166, 165, 163));
 			gBuffered.drawRect(626, 5 + 85 * i, 168, 80);
-			gBuffered.setColor(new Color(122, 122, 122, 122));
-			gBuffered.fillRect(626, 5 + 85 * i, 168, 80);
+			
+			gBuffered.setColor(new Color(255, 255, 255));
+			gBuffered.drawRect(627, 6 + 85 * i, 167, 79);
+			
+			//gBuffered.setColor(new Color(122, 122, 122, 122));
+			//gBuffered.fillRect(626, 5 + 85 * i, 168, 80);
 
 			if (model.getPlayers().get(i).getPiecesStack().size() != 0)
 				gBuffered.drawImage(
@@ -113,30 +109,6 @@ public class Screen {
 		gBuffered.fillRect(390, 320, 70, 40);
 		gBuffered.setColor(Color.black);
 		gBuffered.drawString("Roll", 415, 345);
-		
-		///botão sair
-		gBuffered.setColor(Color.black);
-		gBuffered.drawRect(490, 550, 70, 40);
-		if(buttonsair==true)
-			gBuffered.setColor(new Color(122, 122, 122, 122));
-		else
-			gBuffered.setColor(new Color(220,220,220));
-		
-		gBuffered.fillRect(490, 550, 70, 40);
-		gBuffered.setColor(Color.black);
-		gBuffered.drawString("Sair", 515, 575);
-		//help
-		gBuffered.setColor(Color.black);
-		gBuffered.drawRect(562, 550, 40, 40);
-		gBuffered.setColor(new Color(122, 122, 122, 122));
-		gBuffered.fillRect(562, 550, 40, 40);
-		gBuffered.setColor(Color.black);
-		gBuffered.drawString("Help", 565, 575);
-		
-		
-		
-		///botão 
-		
 
 		Player actual = model.getPlayers().get(model.getActualPlayer());
 		if(!actual.getPiecesStack().isEmpty())
@@ -166,7 +138,7 @@ public class Screen {
 		this.heightScreen = heightScreen;
 	}
 	
-	public void clickMouse(int x, int y) {
+	public void clickRato(int x, int y) {
 		
 		//System.out.println(x + "-" +y);
 		
@@ -176,26 +148,6 @@ public class Screen {
 			model.rollDice();
 			return;
 		}
-		if(x > 562 && x < 601 && y > 550 && y < 589)
-		{
-			File pdf = new File("Data\\Images\\Manual\\regras_pickomino_br.pdf");  
-			try {  
-			  Desktop.getDesktop().open(pdf);  
-			} catch(Exception ex) {  
-			  ex.printStackTrace();  
-			  JOptionPane.showMessageDialog(null, "Não é possivel mostrar ajuda!");  
-			}
-			return;
-		}
-		
-		
-		
-		if(x > 490 && x < 559 && y > 550 && y < 589)
-		{
-			
-			return;
-		}
-		
 		
 		for (int i = 0; i < model.getPlayableDice().size(); i++) {
 			
@@ -208,55 +160,5 @@ public class Screen {
 		}
 		
 	}
-	
-	public void moveMouse(int x, int y) {
-		
-		//System.out.println(x + "-" +y);
-		
-		//Button "Roll" pressed
-		if(x > 390 && x < 459 && y > 320 && y < 359)
-		{
-			buttonrodar = false;
-			model.update();
-		}else{
-			buttonrodar = true;
-			model.update();
-			
-		}
-		if(x > 562 && x < 601 && y > 550 && y < 589)
-		{
-			buttonhelp = false;
-			model.update();
-		}else{
-			buttonhelp = true;
-			model.update();
-		
-		}
-		
-		
-		
-		if(x > 490 && x < 559 && y > 550 && y < 589)
-		{
-			buttonsair = false;
-			model.update();
-		}else{
-			buttonsair = true;
-			model.update();
-			
-		}
-		
-		
-		for (int i = 0; i < model.getPlayableDice().size(); i++) {
-			
-			if(x > (30 + (i % 4) * 87) && x < (90 + (i % 4) * 87) && y > (310 + 70 * (i / 4)) && y < (370 + 70 * (i / 4)))
-			{
-				model.moveDiceToPlayedList(i);
-				//System.out.println(i);
-				return;
-			}
-		}
-		
-	}
-	
 
 }
