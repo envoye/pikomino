@@ -42,7 +42,7 @@ public class PikominoFrame extends JFrame implements Observer {
 		
 		
 		gamePanel.setLayout(new CardLayout(0, 0));
-		gamePanel.add(new PlayersPanel(gamePanel), BorderLayout.CENTER);
+		gamePanel.add(new PlayersPanel(gamePanel, this.model), BorderLayout.CENTER);
 		this.setResizable(false);
 		
 		model.addObserver(this);

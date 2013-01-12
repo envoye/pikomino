@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.GraphicsConfiguration;
 import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
@@ -48,6 +49,8 @@ public class PlayersPanel extends JPanel {
 	static public int widthScreen = 800;
 	static public int heightScreen = 600;
 	
+	private int posX, posY, widthImage, heightImage;
+	
 	private GameBoard gameBoard = null;
 	
 	private String [] players = null;
@@ -55,7 +58,7 @@ public class PlayersPanel extends JPanel {
 	private List<JTextField> textFiels = new ArrayList<JTextField>();
 	private JComboBox<Integer> comboBox;
 
-	public PlayersPanel(final JPanel gamePanel) {
+	public PlayersPanel(final JPanel gamePanel, final Model model) {
 		super();
 		
 		setLayout(new FormLayout(new ColumnSpec[] {
@@ -140,7 +143,8 @@ public class PlayersPanel extends JPanel {
 				setNamesPlayerOfTextBox();
 				gameBoard = new GameBoard(players);
 				gamePanel.removeAll();
-				JPanel newGamePanel = new GamePanel(new Model(gameBoard));
+				model.setGameBoard(gameBoard);
+				JPanel newGamePanel = new GamePanel(model);
 				gamePanel.add(newGamePanel, BorderLayout.CENTER);
 				gamePanel.updateUI();
 			}
@@ -251,6 +255,38 @@ public class PlayersPanel extends JPanel {
 				setVisibilite();
 			}
 		});
+		GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+		GraphicsDevice gs = ge.getDefaultScreenDevice();
+		GraphicsConfiguration gc = gs.getDefaultConfiguration();
+		BufferedImage bimage = gc.createCompatibleImage(widthScreen,
+				heightScreen, Transparency.OPAQUE);
+		Graphics2D gBuffered = bimage.createGraphics();
+
+
+		if (getWidth() > getHeight() * 1.33333f) {
+			widthImage = Math.round(getHeight() + getHeight() * (1f / 3f));
+			heightImage = getHeight();
+
+			posX = Math.round(Math.max(0, (getWidth() - widthImage) / 2f));
+			posY = 0;
+
+		} else {
+			if (getWidth() < getHeight() * 1.33333f) {
+				widthImage = getWidth();
+				heightImage = Math.round(getWidth() - getWidth() * (1f / 4f));
+
+				posX = 0;
+				posY = Math
+						.round(Math.max(0, (getHeight() - heightImage) / 2f));
+
+			} else {
+				posX = 0;
+				posY = 0;
+				widthImage = getWidth();
+				heightImage = getHeight();
+			}
+		}
+	//	g.drawImage(bimage, posX, posY, widthImage, heightImage, this);
 	}
 	
 	public GameBoard getGameBoard() {
