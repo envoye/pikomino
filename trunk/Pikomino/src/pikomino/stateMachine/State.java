@@ -3,8 +3,6 @@
  */
 package pikomino.stateMachine;
 
-import java.io.Serializable;
-
 import pikomino.model.Model;
 
 /**
