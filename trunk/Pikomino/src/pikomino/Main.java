@@ -18,9 +18,9 @@ public class Main {
 		try{
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
         }catch(Exception e){}       
-		new MenuFrame().setVisible(true);
+		//new MenuFrame().setVisible(true);
 		
-		//new PikominoFrame(new Model(new GameBoard("Player1","Player2","p3"))).setVisible(true);
+		new PikominoFrame(new Model()).setVisible(true);
 
 	}
 

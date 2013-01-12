@@ -229,7 +229,7 @@ public class Screen {
 			
 			if(x > (30 + (i % 4) * 87) && x < (90 + (i % 4) * 87) && y > (310 + 70 * (i / 4)) && y < (370 + 70 * (i / 4)))
 			{
-				model.moveDiceToPlayedList(i);
+				//model.moveDiceToPlayedList(i);
 				//System.out.println(i);
 				return;
 			}

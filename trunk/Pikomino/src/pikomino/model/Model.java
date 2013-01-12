@@ -13,6 +13,9 @@ import java.util.Observable;
 public class Model extends Observable {
 	private GameBoard gameBoard;
 
+	public Model() {
+	}
+	
 	public Model(GameBoard gameBoard) {
 		
 		this.gameBoard = gameBoard;
@@ -73,6 +76,10 @@ public class Model extends Observable {
 	
 	public int getActualPlayer() {
 		return gameBoard.getActualPlayerID();
+	}
+
+	public void setGameBoard(GameBoard gameBoard) {
+		this.gameBoard = gameBoard;	
 	}
 
 }
