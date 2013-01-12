@@ -220,25 +220,25 @@ public class Screen {
 			model.rollDice();
 			return;
 		}
-		if(x > 562 && x < 601 && y > 550 && y < 589)
-		{
-			File pdf = new File("Data\\Images\\Manual\\regras_pickomino_br.pdf");  
-			try {  
-			  Desktop.getDesktop().open(pdf);  
-			} catch(Exception ex) {  
-			  ex.printStackTrace();  
-			  JOptionPane.showMessageDialog(null, "Não é possivel mostrar ajuda!");  
-			}
-			return;
-		}
+//		if(x > 562 && x < 601 && y > 550 && y < 589)
+//		{
+//			File pdf = new File("Data\\Images\\Manual\\regras_pickomino_br.pdf");  
+//			try {  
+//			  Desktop.getDesktop().open(pdf);  
+//			} catch(Exception ex) {  
+//			  ex.printStackTrace();  
+//			  JOptionPane.showMessageDialog(null, "Não é possivel mostrar ajuda!");  
+//			}
+//			return;
+//		}
 		
 		
 		
-		if(x > 490 && x < 559 && y > 550 && y < 589)
-		{
-			
-			return;
-		}
+//		if(x > 490 && x < 559 && y > 550 && y < 589)
+//		{
+//			
+//			return;
+//		}
 		
 		
 		for (int i = 0; i < model.getPlayableDice().size(); i++) {
