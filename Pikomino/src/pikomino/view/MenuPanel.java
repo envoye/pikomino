@@ -4,17 +4,24 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.Font;
 import java.awt.Graphics;
+import java.awt.GraphicsConfiguration;
+import java.awt.GraphicsDevice;
+import java.awt.GraphicsEnvironment;
 import java.awt.Insets;
+import java.awt.Transparency;
+
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.border.Border;
 import pikomino.model.Model;
+import pikomino.utils.Images;
 import pikomino.view.screen.Screen;
 import java.awt.GridLayout;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.image.BufferedImage;
 
 /**
  * This class is a Panel, this panel is where all the information about the game
@@ -80,6 +87,9 @@ public class MenuPanel extends JPanel {
 		btnNewGame.setBorder(new RoundedBorder(10));
 		btnNewGame.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
+			//	gamePanel.removeAll();
+				//gamePanel.add(new PlayerPanel(gamePanel), BorderLayout.CENTER);
 			}
 		});
 		add(btnNewGame);
@@ -99,8 +109,11 @@ public class MenuPanel extends JPanel {
 		btnRules.setFont(letra);
 		btnRules.setFocusPainted(false);
 		btnRules.setBorder(new RoundedBorder(10));
+		btnRules.setVisible(false);
 		btnRules.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				
+				
 			}
 		});
 		add(btnRules);
@@ -120,6 +133,25 @@ public class MenuPanel extends JPanel {
 		//gamePanel.add(new PlayerPanel(gamePanel), BorderLayout.CENTER);
 	}
 
+	
+	@Override
+	public synchronized void paintComponent(Graphics g) {
+		super.paintComponent(g);
+
+		GraphicsEnvironment ge = GraphicsEnvironment
+				.getLocalGraphicsEnvironment();
+		GraphicsDevice gs = ge.getDefaultScreenDevice();
+		GraphicsConfiguration gc = gs.getDefaultConfiguration();
+
+		BufferedImage bimage = gc.createCompatibleImage(widthScreen,
+				heightScreen, Transparency.OPAQUE);
+		
+		g.fillRect(0, 0, getWidth(), getHeight());
+
+		g.drawImage(Images.getInicio(), 0, 0, widthScreen, heightScreen,null);
+
+	}
+	
 	
 	private static class RoundedBorder implements Border {
 
