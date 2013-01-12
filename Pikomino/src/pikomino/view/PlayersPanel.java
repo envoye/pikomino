@@ -62,7 +62,7 @@ public class PlayersPanel extends JPanel {
 
 	public PlayersPanel(final JPanel gamePanel, final Model model) {
 		super();
-		setLayout(new FormLayout(new ColumnSpec[] {
+		FormLayout formLayout = new FormLayout(new ColumnSpec[] {
 				FormFactory.RELATED_GAP_COLSPEC,
 				ColumnSpec.decode("196px"),
 				FormFactory.RELATED_GAP_COLSPEC,
@@ -70,11 +70,11 @@ public class PlayersPanel extends JPanel {
 				FormFactory.RELATED_GAP_COLSPEC,
 				ColumnSpec.decode("max(69dlu;default)"),
 				FormFactory.RELATED_GAP_COLSPEC,
-				ColumnSpec.decode("max(52dlu;default)"),
+				ColumnSpec.decode("max(169dlu;default)"),
 				FormFactory.RELATED_GAP_COLSPEC,
 				ColumnSpec.decode("max(80dlu;default)"),
 				FormFactory.RELATED_GAP_COLSPEC,
-				ColumnSpec.decode("max(150dlu;default)"),},
+				ColumnSpec.decode("max(32dlu;default)"),},
 			new RowSpec[] {
 				FormFactory.RELATED_GAP_ROWSPEC,
 				RowSpec.decode("64px"),
@@ -113,7 +113,11 @@ public class PlayersPanel extends JPanel {
 				FormFactory.RELATED_GAP_ROWSPEC,
 				FormFactory.DEFAULT_ROWSPEC,
 				FormFactory.RELATED_GAP_ROWSPEC,
-				FormFactory.DEFAULT_ROWSPEC,}));
+				RowSpec.decode("max(65dlu;default)"),
+				FormFactory.RELATED_GAP_ROWSPEC,
+				RowSpec.decode("max(44dlu;default)"),});
+		formLayout.setHonorsVisibility(false);
+		setLayout(formLayout);
 				
 		JLabel lblStartPlay = new JLabel("Players Menu");
 		lblStartPlay.setForeground(new Color(139, 69, 19));
@@ -134,24 +138,6 @@ public class PlayersPanel extends JPanel {
 		add(comboBox, "4, 8, 1, 2, fill, top");
 		comboBox.setMaximumRowCount(6);
 		lblNumberOfPlayers.setLabelFor(comboBox);
-		
-		JButton btnPlay = new JButton("Start Play");
-		btnPlay.setForeground(new Color(139, 69, 19));
-
-		btnPlay.setFont(new Font("Arial", Font.BOLD, 15));
-		btnPlay.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				setNamesPlayerOfTextBox();
-				gameBoard = new GameBoard(players);
-				gamePanel.removeAll();
-				model.setGameBoard(gameBoard);
-				JPanel newGamePanel = new GamePanel(model);
-				gamePanel.add(newGamePanel, BorderLayout.CENTER);
-				gamePanel.updateUI();
-			}
-		});
-		add(btnPlay, "10, 8, 1, 3");
 		
 		JLabel lblPlayer1 = new JLabel("Player 1:");
 		lblPlayer1.setForeground(new Color(139, 69, 19));
@@ -251,6 +237,24 @@ public class PlayersPanel extends JPanel {
 		player7.setDocument(new JTextFieldLimit(10));
 		player7.setColumns(10);
 		textFiels.add(player7);
+				
+				JButton btnPlay = new JButton("Start Play");
+				btnPlay.setForeground(new Color(139, 69, 19));
+				
+						btnPlay.setFont(new Font("Arial", Font.BOLD, 15));
+						btnPlay.addMouseListener(new MouseAdapter() {
+							@Override
+							public void mouseClicked(MouseEvent e) {
+								setNamesPlayerOfTextBox();
+								gameBoard = new GameBoard(players);
+								gamePanel.removeAll();
+								model.setGameBoard(gameBoard);
+								JPanel newGamePanel = new GamePanel(model);
+								gamePanel.add(newGamePanel, BorderLayout.CENTER);
+								gamePanel.updateUI();
+							}
+						});
+						add(btnPlay, "10, 40, default, fill");
 		
 		comboBox.addPropertyChangeListener(new PropertyChangeListener() {
 			public void propertyChange(PropertyChangeEvent evt) {
