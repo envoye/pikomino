@@ -1,7 +1,10 @@
 package pikomino;
 
+import javax.swing.UIManager;
+
 import pikomino.model.GameBoard;
 import pikomino.model.Model;
+import pikomino.view.MenuFrame;
 import pikomino.view.PikominoFrame;
 
 public class Main {
@@ -12,7 +15,12 @@ public class Main {
 	 */
 	public static void main(String[] args) {
 		
-		new PikominoFrame(new Model(new GameBoard("Player1","Player2","p3"))).setVisible(true);
+		try{
+            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+        }catch(Exception e){}       
+		new MenuFrame().setVisible(true);
+		
+		//new PikominoFrame(new Model(new GameBoard("Player1","Player2","p3"))).setVisible(true);
 
 	}
 

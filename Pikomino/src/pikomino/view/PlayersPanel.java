@@ -8,8 +8,6 @@ import java.awt.GraphicsConfiguration;
 import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
 import java.awt.Transparency;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
@@ -134,10 +132,7 @@ public class PlayersPanel extends JPanel {
 		lblNumberOfPlayers.setLabelFor(comboBox);
 		
 		JButton btnPlay = new JButton("Start Play");
-		btnPlay.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
+
 		btnPlay.setFont(new Font("Arial", Font.BOLD, 15));
 		btnPlay.addMouseListener(new MouseAdapter() {
 			@Override
@@ -145,8 +140,13 @@ public class PlayersPanel extends JPanel {
 				setNamesPlayerOfTextBox();
 				gameBoard = new GameBoard(players);
 				gamePanel.removeAll();
-				gamePanel.add(new GamePanel(new Model(gameBoard)), BorderLayout.CENTER);
+				JPanel newGamePanel = new GamePanel(new Model(gameBoard));
+				newGamePanel.repaint();
+				gamePanel.add(newGamePanel, BorderLayout.CENTER);
+				gamePanel.invalidate();
 				gamePanel.repaint();
+				gamePanel.invalidate();
+				newGamePanel.repaint();
 			}
 		});
 		add(btnPlay, "10, 8");
