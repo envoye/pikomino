@@ -34,7 +34,7 @@ public class PikominoFrame extends JFrame implements Observer {
 		this.model = model;
 		this.setTitle("Pikomino");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 806, 649);
+		setBounds(100, 100, 806, 647);
 		
 		gamePanel = new JPanel();
 		setContentPane(gamePanel);
