@@ -4,10 +4,13 @@ import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Desktop;
 import java.awt.Graphics2D;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.geom.Rectangle2D;
 import java.io.File;
 import java.util.List;
 
+import javax.swing.JButton;
 import javax.swing.JOptionPane;
 
 import pikomino.model.Dice;
@@ -106,6 +109,14 @@ public class Screen {
 
         }
 
+        /*gBuffered.setColor(Color.black);
+		gBuffered.drawRect(390, 320, 70, 40);
+		
+		if(buttonrodar==true){
+			gBuffered.setColor(new Color(122, 122, 122, 122));
+		}
+		else{
+=======
 		
 		if(buttonrodar){
 			gBuffered.setColor(new Color(33, 103, 204));
@@ -118,13 +129,33 @@ public class Screen {
 		else{
 			gBuffered.setColor(Color.WHITE);
 			gBuffered.drawRect(390, 320, 70, 40);
+>>>>>>> .r127
 			gBuffered.setColor(new Color(182, 182, 132, 122));
+<<<<<<< .mine
+		}
+		
+=======
 			
 		}
+>>>>>>> .r127
 		gBuffered.fillRect(390, 320, 70, 40);
 		gBuffered.setColor(Color.black);
 		gBuffered.drawString("Roll", 415, 345);
-		
+		*/
+        
+        JButton btroll = new JButton("Roll");
+        btroll.setSize(70, 40);
+        btroll.setLocation(390, 320);
+        gamePanel.add(btroll);
+        
+        btroll.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				// TODO Auto-generated method stub
+				model.rollDice();
+			}
+		});
+        
 		///botão sair
 //		gBuffered.setColor(Color.black);
 //		gBuffered.drawRect(490, 550, 70, 40);
@@ -144,11 +175,8 @@ public class Screen {
 //		gBuffered.setColor(Color.black);
 //		gBuffered.drawString("Help", 565, 575);
 //		
-		
-		
 		///botão 
 		
-
 		Player actual = model.getPlayers().get(model.getActualPlayer());
 		if(!actual.getPiecesStack().isEmpty())
 		{
