@@ -1,26 +1,15 @@
 package pikomino.view;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
-import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.GraphicsConfiguration;
-import java.awt.GraphicsDevice;
-import java.awt.GraphicsEnvironment;
 import java.awt.Insets;
-import java.awt.Transparency;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.awt.image.BufferedImage;
-
 import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.border.Border;
-
 import pikomino.model.Model;
 import pikomino.view.screen.Screen;
 import java.awt.GridLayout;
@@ -35,13 +24,36 @@ import java.awt.event.ActionEvent;
  *
  */
 public class MenuPanel extends JPanel {
-
 	JPanel gamePanel;
-	JButton btnNewGame, btnRules, exitProg, j;
+	JButton btnNewGame, btnRules, exitProg, j, icon;
 	private static Font letra = new Font("Verdana", Font.PLAIN, 20);
 	
 	public MenuPanel(JPanel gamePanel) {
-		for(int i=0; i<3; i++){
+		
+		for(int i=0; i<4; i++){
+			JButton j;
+			
+			j = new JButton("");
+			j.setVisible(false);
+			add(j);
+		}
+		
+		/*Image img = icon.getImage() ;  
+		   Image newimg = img.getScaledInstance( NEW_WIDTH, NEW_HEIGHT,  java.awt.Image.SCALE_SMOOTH ) ;  
+		   icon = new ImageIcon( newimg );*/
+		
+		
+		icon = new JButton(new ImageIcon("Data\\Images\\pic.png"));
+		icon.setBorder(BorderFactory.createEmptyBorder(0,0,0,0));
+		icon.setOpaque(false);
+		icon.setFocusPainted(false);
+		icon.setBorderPainted(false);
+		icon.setContentAreaFilled(false);
+		
+		
+		add(icon);
+		
+		for(int i=0; i<4; i++){
 			JButton j;
 			
 			j = new JButton("");
@@ -51,7 +63,7 @@ public class MenuPanel extends JPanel {
 		
 		this.gamePanel = gamePanel;
 		setLayout(new GridLayout(7, 3, 0, 0));
-		setBackground(new Color(0, 221, 100));
+		setBackground(new Color(224, 241, 251));
 		
 		j = new JButton("");
 		j.setVisible(false);
@@ -94,7 +106,7 @@ public class MenuPanel extends JPanel {
 		add(btnRules);
 		
 
-		for(int i=0; i<5; i++){
+		for(int i=0; i<4; i++){
 			JButton j;
 			
 			j = new JButton("");
@@ -103,25 +115,6 @@ public class MenuPanel extends JPanel {
 		}
 
 		
-		exitProg = new JButton("Exit");
-		exitProg.setBackground(new Color(0, 221, 221));
-		exitProg.setFont(letra);
-		exitProg.setFocusPainted(false);
-		exitProg.setBorder(new RoundedBorder(10));
-		exitProg.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-			}
-		});
-		add(exitProg);
-		
-		
-		for(int i=0; i<4; i++){
-			JButton j;
-			
-			j = new JButton("");
-			j.setVisible(false);
-			add(j);
-		}
 		
 		//gamePanel.removeAll();
 		//gamePanel.add(new PlayerPanel(gamePanel), BorderLayout.CENTER);
