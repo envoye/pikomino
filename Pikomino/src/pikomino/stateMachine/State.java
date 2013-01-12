@@ -37,8 +37,6 @@ public abstract class State {
     public void endTurn() {}
     
     public void dicePick(int i) {}
-    
-    public void pieceChoice() {}
 
     public void stealPiece() {}
     

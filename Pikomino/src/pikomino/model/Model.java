@@ -163,15 +163,21 @@ public class Model extends Observable {
 
 	public void takePiece(Piece piece) {
 		gameBoard.takePiece(piece);
+		setChanged();
+		notifyObservers();
 		
 	}
 	public void takePiece() {
 		state.pickPiece();
+		setChanged();
+		notifyObservers();
 		
 	}
 
 	public void stealPiece() {
 		gameBoard.stealPiece();
+		setChanged();
+		notifyObservers();
 		
 	}
 	
@@ -185,6 +191,20 @@ public class Model extends Observable {
 		endGameState = new EndGameState(this, gameBoard);
 		
 		setState(newTurnState);
+		setChanged();
+		notifyObservers();
+	}
+
+	public void endTurn() {
+		state.endTurn();
+		setChanged();
+		notifyObservers();
+		
+	}
+
+	public int getActualPlayerID() {
+		// TODO Auto-generated method stub
+		return gameBoard.getActualPlayerID();
 	}
 
 	
