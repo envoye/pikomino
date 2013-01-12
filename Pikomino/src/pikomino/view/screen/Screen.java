@@ -9,6 +9,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.geom.Rectangle2D;
 import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.JButton;
@@ -271,13 +272,22 @@ public class Screen {
 		}
 	
 		
-		
+		ArrayList<Dice> p = model.getPlayedDice();
 		for (int i = 0; i < model.getPlayableDice().size(); i++) {
 			
 			if(x > (30 + (i % 4) * 87) && x < (90 + (i % 4) * 87) && y > (310 + 70 * (i / 4)) && y < (370 + 70 * (i / 4)))
 			{
+				int face=model.getPlayableDice().get(i).getDieFaceValue();
+				Boolean b=true;
+				
+				for (int j = 0; j <p.size(); j++){
+					if(face==p.get(j).getDieFaceValue()){
+						b=false;
+					break;}
+				}
+				if(b){
 				gamePanel.setCursor(new Cursor(Cursor.HAND_CURSOR));
-				saveddice=i;
+				saveddice = i;}
 				return;
 			}
 		}
