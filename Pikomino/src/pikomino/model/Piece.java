@@ -1,6 +1,5 @@
 package pikomino.model;
 
-import java.rmi.UnexpectedException;
 
 /**
  * This class represents a Piece in the game, to create a piece use Piece.createPiece(int value).
