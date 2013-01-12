@@ -24,13 +24,14 @@ public class PikominoFrame extends JFrame implements Observer {
 	private static final long serialVersionUID = 1L;
 	private Model model;
 	private JPanel gamePanel;
+	static PikominoFrame thisFrame;
 	
 	/**
 	 * This class represents the actual window of the game
 	 * @param model its the data model
 	 */
 	public PikominoFrame(Model model) {
-		
+		this.thisFrame = this;
 		this.model = model;
 		this.setTitle("Pikomino");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
