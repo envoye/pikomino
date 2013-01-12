@@ -9,9 +9,12 @@ import java.awt.GraphicsEnvironment;
 import java.awt.Transparency;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionAdapter;
 import java.awt.image.BufferedImage;
 
 import javax.swing.JPanel;
+
+
 
 import pikomino.model.Model;
 import pikomino.view.screen.Screen;
@@ -39,7 +42,7 @@ public class GamePanel extends JPanel {
 		screen = new Screen(this, model, widthScreen, heightScreen);
 
 		this.addMouseListener(new ClickListener());
-
+		this.addMouseMotionListener(new MoverListener());
 	}
 
 	@Override
@@ -90,7 +93,7 @@ public class GamePanel extends JPanel {
 	class ClickListener implements MouseListener {
 		@Override
 		public void mousePressed(MouseEvent e) {
-			screen.clickRato(e.getX(), e.getY());
+			screen.clickMouse(e.getX(), e.getY());
 		}
 
 		@Override
@@ -110,5 +113,16 @@ public class GamePanel extends JPanel {
 		}
 
 	}
+	
+	class MoverListener extends MouseMotionAdapter {
+        @Override
+        public void mouseMoved(MouseEvent e) {
+        	screen.moveMouse(e.getX(), e.getY());
+        }
+//        @Override
+//        public void mouseDragged(MouseEvent e) {
+//        	gamePanel.arrastaRato(e.getX(),e.getY());
+//        }
+    }
 
 }
