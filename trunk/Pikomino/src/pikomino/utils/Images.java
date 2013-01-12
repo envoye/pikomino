@@ -21,6 +21,7 @@ public class Images {
 	private static HashMap<Integer, BufferedImage> piecesImages = new HashMap<Integer, BufferedImage>();
 	
 	private static BufferedImage background = null;
+	private static BufferedImage backgroundPlayers = null;
 	private static BufferedImage minhoca1 = null;
 	private static BufferedImage minhoca2 = null;
 	private static BufferedImage pic1 = null;
@@ -29,7 +30,7 @@ public class Images {
 	
     static {
         try {
-        	
+        	backgroundPlayers = ImageIO.read(new File("Data\\Images\\bgroundForm.png"));
         	background = ImageIO.read(new File("Data\\Images\\Background.png"));
         	//minhoca1 = ImageIO.read(new File("Data\\Images\\Background.jpg"));
         	//minhoca2 = ImageIO.read(new File("Data\\Images\\Background.jpg"));
@@ -101,6 +102,9 @@ public class Images {
 	 */
 	public static BufferedImage getBackground() {
 		return background;
+	}
+	public static BufferedImage getBackgroundPlayers() {
+		return backgroundPlayers;
 	}
     
 }
