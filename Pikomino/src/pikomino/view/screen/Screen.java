@@ -56,21 +56,21 @@ public class Screen {
 				null);
 
 		List<Piece> pieces = model.getPieces();
-		gBuffered.drawRect(0, 0, 620, 300);
+		//gBuffered.drawRect(0, 0, 620, 300);
 		for (int i = 0; i < pieces.size(); i++) {
 			gBuffered.drawImage(Images.getImageOf(pieces.get(i)),
 					40 + (i % 8) * 70, 25 + 140 * (i / 8), 50, 100, null);
 		}
 
 		List<Dice> playableDices = model.getPlayableDice();
-		gBuffered.drawRect(0, 300, 380, 150);
+		//gBuffered.drawRect(0, 300, 380, 150);
 		for (int i = 0; i < playableDices.size(); i++) {
 			gBuffered.drawImage(Images.getImageOf(playableDices.get(i)),
 					30 + (i % 4) * 87, 310 + 70 * (i / 4), 60, 60, null);
 		}
 
 		List<Dice> playedDices = model.getPlayedDice();
-		gBuffered.drawRect(0, 450, 380, 150);
+		//gBuffered.drawRect(0, 450, 380, 150);
 		for (int i = 0; i < Math.min(playedDices.size(), 8); i++) {
 			gBuffered.drawImage(Images.getImageOf(playedDices.get(i)),
 					30 + (i % 4) * 87, 460 + 70 * (i / 4), 60, 60, null);
