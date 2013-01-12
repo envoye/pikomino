@@ -155,9 +155,22 @@ public class Screen {
 		*/
         
         JButton btroll = new JButton("Roll");
-        btroll.setSize(70, 40);
+        btroll.setSize(80, 40);
         btroll.setLocation(390, 341);
         gamePanel.add(btroll);
+        
+        JButton bEnd = new JButton("End Turn");
+        bEnd.setSize(80, 40);
+        bEnd.setLocation(390, 381);
+        gamePanel.add(bEnd);
+        
+        bEnd.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				// TODO Auto-generated method stub
+				//model
+			}
+		});
         
         btroll.addActionListener(new ActionListener() {
 			@Override
@@ -168,8 +181,8 @@ public class Screen {
 		});
         
         JButton bTake = new JButton("Take");
-        bTake.setSize(70, 40);
-        bTake.setLocation(460, 341);
+        bTake.setSize(80, 40);
+        bTake.setLocation(390, 421);
         gamePanel.add(bTake);
         
         bTake.addActionListener(new ActionListener() {
@@ -181,8 +194,8 @@ public class Screen {
 		});
         
         JButton bSteal = new JButton("Steal");
-        bSteal.setSize(70, 40);
-        bSteal.setLocation(530, 341);
+        bSteal.setSize(80, 40);
+        bSteal.setLocation(390, 461);
         gamePanel.add(bSteal);
         
         bSteal.addActionListener(new ActionListener() {
