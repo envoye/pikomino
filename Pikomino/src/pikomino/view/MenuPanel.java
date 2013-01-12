@@ -1,5 +1,6 @@
 package pikomino.view;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -24,6 +25,17 @@ import pikomino.view.screen.Screen;
  *
  */
 public class MenuPanel extends JPanel {
+
+	JPanel gamePanel;
+	
+	public MenuPanel(JPanel gamePanel) {
+
+		
+		this.gamePanel = gamePanel;
+		
+		//gamePanel.removeAll();
+		//gamePanel.add(new PlayerPanel(gamePanel), BorderLayout.CENTER);
+	}
 
 	static public int widthScreen = 800;
 	static public int heightScreen = 600;
