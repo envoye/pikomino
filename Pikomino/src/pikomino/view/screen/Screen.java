@@ -150,7 +150,7 @@ public class Screen {
         
         JButton btroll = new JButton("Roll");
         btroll.setSize(70, 40);
-        btroll.setLocation(390, 320);
+        btroll.setLocation(390, 341);
         gamePanel.add(btroll);
         
         btroll.addActionListener(new ActionListener() {
