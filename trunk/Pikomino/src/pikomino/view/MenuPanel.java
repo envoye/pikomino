@@ -1,5 +1,6 @@
 package pikomino.view;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Font;
@@ -31,11 +32,11 @@ import java.awt.image.BufferedImage;
  *
  */
 public class MenuPanel extends JPanel {
-	JPanel gamePanel;
-	JButton btnNewGame, btnRules, exitProg, j, icon;
+	private JPanel gamePanel;
+	private JButton btnNewGame, btnRules, exitProg, j, icon;
 	private static Font letra = new Font("Verdana", Font.PLAIN, 20);
 	
-	public MenuPanel(JPanel gamePanel) {
+	public MenuPanel(final JPanel gamePanel, final Model model) {
 		
 		for(int i=0; i<4; i++){
 			JButton j;
@@ -88,8 +89,10 @@ public class MenuPanel extends JPanel {
 		btnNewGame.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-			//	gamePanel.removeAll();
-				//gamePanel.add(new PlayerPanel(gamePanel), BorderLayout.CENTER);
+				gamePanel.removeAll();
+				JPanel newGamePanel = new PlayersPanel(gamePanel, model);
+				gamePanel.add(newGamePanel, BorderLayout.CENTER);
+				gamePanel.updateUI();
 			}
 		});
 		add(btnNewGame);
