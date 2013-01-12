@@ -160,6 +160,19 @@ public class GameBoard {
 		players.get(actualPlayerID).addPiecesStack(piece);
 
 	}
+	
+	public void takePiece() {
+		for(int i = 0 ; i< pieces.size() ; i++)
+		{
+			if(pieces.get(i).getValue() > getTotalDicePlayed() && i!=0)
+			{
+				players.get(actualPlayerID).addPiecesStack(pieces.get(i-1));
+				pieces.remove(pieces.get(i-1));
+				return;
+			}
+		}
+
+	}
 
 	public void returnPiece() {
 		Piece piece = players.get(actualPlayerID).takePiecesStack();
