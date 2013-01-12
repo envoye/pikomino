@@ -124,7 +124,6 @@ public class GameBoard {
 		}
 		
 		return false;
-		
 	}
 	
 	public boolean actualPlayerCanPick() {
@@ -166,6 +165,7 @@ public class GameBoard {
 		addPieceToBoard(piece);
 		if(piece != pieces.get(pieces.size() - 1))
 			pieces.remove(pieces.size() - 1);
+
 	}
 
 	public void moveDiceToPlayedList(int index) {
@@ -210,5 +210,18 @@ public class GameBoard {
 
 	private int rollDie() {
 		return (int) (Math.random() * 6) + 1;
+	}
+
+	public void stealPiece() {
+		for(int i = 0; i< players.size(); i++) {
+			if(i!=actualPlayerID)
+			{
+				if(players.get(i).getTopPiece().getValue() == getTotalDicePlayed())
+				{
+					players.get(actualPlayerID).addPiecesStack(players.get(i).takePiecesStack());
+					return;
+				}
+			}
+		}
 	}
 }
