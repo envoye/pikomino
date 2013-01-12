@@ -18,6 +18,10 @@ import javax.swing.JPanel;
 
 import pikomino.model.Model;
 import pikomino.view.screen.Screen;
+import javax.swing.JMenuBar;
+import javax.swing.JMenu;
+import javax.swing.JMenuItem;
+import javax.swing.SwingConstants;
 
 /**
  * This class is a Panel, this panel is where all the information about the game
@@ -40,6 +44,24 @@ public class GamePanel extends JPanel {
 	public GamePanel(Model model) {
 		this.model = model;
 		screen = new Screen(this, model, widthScreen, heightScreen);
+		setLayout(null);
+		
+		JMenuBar menuBar = new JMenuBar();
+		menuBar.setBounds(0, 0, 800, 21);
+		add(menuBar);
+		
+		JMenu mnMenu = new JMenu("Menu");
+		mnMenu.setHorizontalAlignment(SwingConstants.LEFT);
+		menuBar.add(mnMenu);
+		
+		JMenuItem mntmNewGane = new JMenuItem("New Gane");
+		mnMenu.add(mntmNewGane);
+		
+		JMenuItem mntmExit = new JMenuItem("Exit");
+		mnMenu.add(mntmExit);
+		
+		JMenu mnHelp = new JMenu("Help");
+		menuBar.add(mnHelp);
 
 		this.addMouseListener(new ClickListener());
 		this.addMouseMotionListener(new MoverListener());
@@ -87,7 +109,7 @@ public class GamePanel extends JPanel {
 			}
 		}
 
-		g.drawImage(bimage, posX, posY, widthImage, heightImage, this);
+		g.drawImage(bimage, posX, posY+10, widthImage, heightImage, this);
 	}
 
 	class ClickListener implements MouseListener {
@@ -124,5 +146,4 @@ public class GamePanel extends JPanel {
 //        	gamePanel.arrastaRato(e.getX(),e.getY());
 //        }
     }
-
 }
