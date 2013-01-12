@@ -1,7 +1,5 @@
 package pikomino;
 
-import javax.swing.JFrame;
-
 import pikomino.model.GameBoard;
 import pikomino.model.Model;
 import pikomino.view.PikominoFrame;
