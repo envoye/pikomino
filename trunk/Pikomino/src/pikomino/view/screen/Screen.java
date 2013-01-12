@@ -2,13 +2,17 @@ package pikomino.view.screen;
 
 import java.awt.BasicStroke;
 import java.awt.Color;
+import java.awt.Desktop;
 import java.awt.Font;
 import java.awt.Graphics2D;
 import java.awt.geom.Rectangle2D;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JOptionPane;
 
 import pikomino.model.Dice;
@@ -31,6 +35,10 @@ import pikomino.view.GamePanel;
  */
 public class Screen {
 
+	private static  boolean buttonsair = true;
+	private static  boolean buttonhelp = true;
+	private static  boolean buttonrodar = true;
+	
 	protected GamePanel gamePanel;
 	protected Model model;
 	protected int widthScreen, heightScreen;
@@ -108,12 +116,27 @@ public class Screen {
 		
 		///botão sair
 		gBuffered.setColor(Color.black);
-		gBuffered.drawRect(390, 550, 70, 40);
-		gBuffered.setColor(new Color(122, 122, 122, 122));
-		gBuffered.fillRect(390, 550, 70, 40);
+		gBuffered.drawRect(490, 550, 70, 40);
+		if(buttonsair==true)
+			gBuffered.setColor(new Color(122, 122, 122, 122));
+		else
+			gBuffered.setColor(new Color(220,220,220));
+		
+		gBuffered.fillRect(490, 550, 70, 40);
 		gBuffered.setColor(Color.black);
-		gBuffered.drawString("Sair", 415, 575);
-		///botão sair
+		gBuffered.drawString("Sair", 515, 575);
+		//help
+		gBuffered.setColor(Color.black);
+		gBuffered.drawRect(562, 550, 40, 40);
+		gBuffered.setColor(new Color(122, 122, 122, 122));
+		gBuffered.fillRect(562, 550, 40, 40);
+		gBuffered.setColor(Color.black);
+		gBuffered.drawString("Help", 565, 575);
+		
+		
+		
+		///botão 
+		
 
 		Player actual = model.getPlayers().get(model.getActualPlayer());
 		if(!actual.getPiecesStack().isEmpty())
@@ -143,7 +166,7 @@ public class Screen {
 		this.heightScreen = heightScreen;
 	}
 	
-	public void clickRato(int x, int y) {
+	public void clickMouse(int x, int y) {
 		
 		//System.out.println(x + "-" +y);
 		
@@ -153,6 +176,26 @@ public class Screen {
 			model.rollDice();
 			return;
 		}
+		if(x > 562 && x < 601 && y > 550 && y < 589)
+		{
+			File pdf = new File("Data\\Images\\Manual\\regras_pickomino_br.pdf");  
+			try {  
+			  Desktop.getDesktop().open(pdf);  
+			} catch(Exception ex) {  
+			  ex.printStackTrace();  
+			  JOptionPane.showMessageDialog(null, "Não é possivel mostrar ajuda!");  
+			}
+			return;
+		}
+		
+		
+		
+		if(x > 490 && x < 559 && y > 550 && y < 589)
+		{
+			
+			return;
+		}
+		
 		
 		for (int i = 0; i < model.getPlayableDice().size(); i++) {
 			
@@ -165,5 +208,55 @@ public class Screen {
 		}
 		
 	}
+	
+	public void moveMouse(int x, int y) {
+		
+		//System.out.println(x + "-" +y);
+		
+		//Button "Roll" pressed
+		if(x > 390 && x < 459 && y > 320 && y < 359)
+		{
+			buttonrodar = false;
+			model.update();
+		}else{
+			buttonrodar = true;
+			model.update();
+			
+		}
+		if(x > 562 && x < 601 && y > 550 && y < 589)
+		{
+			buttonhelp = false;
+			model.update();
+		}else{
+			buttonhelp = true;
+			model.update();
+		
+		}
+		
+		
+		
+		if(x > 490 && x < 559 && y > 550 && y < 589)
+		{
+			buttonsair = false;
+			model.update();
+		}else{
+			buttonhelp = true;
+			model.update();
+			
+		}
+		
+		
+		for (int i = 0; i < model.getPlayableDice().size(); i++) {
+			
+			if(x > (30 + (i % 4) * 87) && x < (90 + (i % 4) * 87) && y > (310 + 70 * (i / 4)) && y < (370 + 70 * (i / 4)))
+			{
+				model.moveDiceToPlayedList(i);
+				//System.out.println(i);
+				return;
+			}
+		}
+		
+	}
+	
 
 }
