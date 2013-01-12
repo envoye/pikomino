@@ -227,27 +227,7 @@ public class Screen {
 			model.update();
 			
 		}
-		if(x > 562 && x < 601 && y > 550 && y < 589)
-		{
-			buttonhelp = false;
-			model.update();
-		}else{
-			buttonhelp = true;
-			model.update();
-		
-		}
-		
-		
-		
-		if(x > 490 && x < 559 && y > 550 && y < 589)
-		{
-			buttonsair = false;
-			model.update();
-		}else{
-			buttonsair = true;
-			model.update();
-			
-		}
+	
 		
 		
 		for (int i = 0; i < model.getPlayableDice().size(); i++) {
