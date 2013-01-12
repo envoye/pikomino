@@ -33,6 +33,7 @@ import pikomino.view.GamePanel;
  */
 public class Screen {
 
+	private static int saveddice = -1;
 	private static  boolean buttonsair = true;
 	private static  boolean buttonhelp = true;
 	private static  boolean buttonrodar = true;
@@ -68,8 +69,12 @@ public class Screen {
 		List<Dice> playableDices = model.getPlayableDice();
 		//gBuffered.drawRect(0, 300, 380, 150);
 		for (int i = 0; i < playableDices.size(); i++) {
-			gBuffered.drawImage(Images.getImageOf(playableDices.get(i)),
-					30 + (i % 4) * 87, 310 + 70 * (i / 4), 60, 60, null);
+			if(i==saveddice)
+				gBuffered.drawImage(Images.getImageOf(playableDices.get(i)),
+						30 + (i % 4) * 87-5, 310 + 70 * (i / 4)-5, 70, 70, null);
+				else
+					gBuffered.drawImage(Images.getImageOf(playableDices.get(i)),
+							30 + (i % 4) * 87, 310 + 70 * (i / 4), 60, 60, null);
 		}
 
 		List<Dice> playedDices = model.getPlayedDice();
@@ -269,11 +274,11 @@ public class Screen {
 			
 			if(x > (30 + (i % 4) * 87) && x < (90 + (i % 4) * 87) && y > (310 + 70 * (i / 4)) && y < (370 + 70 * (i / 4)))
 			{
-				//model.moveDiceToPlayedList(i);
-				//System.out.println(i);
+				saveddice=i;
 				return;
 			}
 		}
+		saveddice=-1;
 		
 	}
 	
