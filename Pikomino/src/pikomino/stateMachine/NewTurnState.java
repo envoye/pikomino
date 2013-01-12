@@ -23,6 +23,7 @@ public class NewTurnState extends State {
 	public void enterState() {
 		pickPlayer();
 		resetDice();
+		pikominoModel.setState(pikominoModel.getDiceRollState());
 	}
 
 
@@ -30,14 +31,9 @@ public class NewTurnState extends State {
 	private void resetDice() {
 		gameBoard.getPlayableDice().addAll(gameBoard.getPlayedDice());
 		gameBoard.getPlayedDice().clear();
-		pikominoModel.setState(pikominoModel.getDiceRollState());
+		
 	}
 
-
-
-	/**
-	 * To be executed when starting the game or at the beginning of each move to change player
-	 */
 	private void pickPlayer(){
 		gameBoard.changeNextPlayer();
 	}

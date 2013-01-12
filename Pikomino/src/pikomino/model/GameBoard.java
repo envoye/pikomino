@@ -7,7 +7,7 @@ import java.util.ArrayList;
  *
  */
 public class GameBoard {
-	private int actualPlayerID = 0;
+	private int actualPlayerID = -1;
 
 	private ArrayList<Player> players = new ArrayList<Player>();
 	private ArrayList<Dice> playableDice = new ArrayList<Dice>();
@@ -118,7 +118,8 @@ public class GameBoard {
 		for(int i = 0; i< players.size(); i++) {
 			if(i!=actualPlayerID)
 			{
-				if(players.get(i).getTopPiece().getValue() == getTotalDicePlayed())
+				if(players.get(i).getTopPiece() != null && 
+						players.get(i).getTopPiece().getValue() == getTotalDicePlayed())
 					return true;
 			}
 		}
@@ -162,15 +163,20 @@ public class GameBoard {
 
 	public void returnPiece() {
 		Piece piece = players.get(actualPlayerID).takePiecesStack();
+		if(piece != null)
 		addPieceToBoard(piece);
 		if(piece != pieces.get(pieces.size() - 1))
 			pieces.remove(pieces.size() - 1);
 
 	}
 
-	public void moveDiceToPlayedList(int index) {
+	public boolean moveDiceToPlayedList(int index) {
 		Dice die_toRemove = new Dice(playableDice.get(index));
-
+		for (int i = 0 ; i < playedDice.size() ; i++) {
+			if (die_toRemove.getDieFaceValue() == playedDice.get(i).getDieFaceValue()) {
+				return false;
+			}
+		}
 		for (int i = 0 ; i < playableDice.size() ; i++) {
 			if (die_toRemove.getDieFaceValue() == playableDice.get(i).getDieFaceValue()) {
 				playableDice.remove(i);
@@ -178,6 +184,7 @@ public class GameBoard {
 				i--;
 			}
 		}
+		return true;
 	}
 
 	private void addPieceToBoard(Piece p) {
@@ -216,7 +223,8 @@ public class GameBoard {
 		for(int i = 0; i< players.size(); i++) {
 			if(i!=actualPlayerID)
 			{
-				if(players.get(i).getTopPiece().getValue() == getTotalDicePlayed())
+				if(players.get(i).getTopPiece() != null && 
+						players.get(i).getTopPiece().getValue() == getTotalDicePlayed())
 				{
 					players.get(actualPlayerID).addPiecesStack(players.get(i).takePiecesStack());
 					return;
