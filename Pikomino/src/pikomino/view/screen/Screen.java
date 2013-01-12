@@ -4,6 +4,7 @@ import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Desktop;
+import java.awt.Font;
 import java.awt.Graphics2D;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -59,6 +60,8 @@ public class Screen {
 		gBuffered.setColor(Color.black);
 		gBuffered.setStroke(new BasicStroke(5, BasicStroke.CAP_ROUND,
 				BasicStroke.JOIN_ROUND));
+		gBuffered.setFont(new Font("Arial", Font.BOLD, 13));
+		
 		gBuffered.drawImage(Images.getBackground(), 0, 0, widthScreen, heightScreen,
 				null);
 
