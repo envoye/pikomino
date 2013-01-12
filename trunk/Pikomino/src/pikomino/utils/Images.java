@@ -30,7 +30,7 @@ public class Images {
     static {
         try {
         	
-        	background = ImageIO.read(new File("Data\\Images\\Background.jpg"));
+        	background = ImageIO.read(new File("Data\\Images\\Background.png"));
         	//minhoca1 = ImageIO.read(new File("Data\\Images\\Background.jpg"));
         	//minhoca2 = ImageIO.read(new File("Data\\Images\\Background.jpg"));
         	//pic1 = ImageIO.read(new File("Data\\Images\\Background.jpg"));
