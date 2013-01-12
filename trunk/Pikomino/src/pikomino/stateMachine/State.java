@@ -3,7 +3,9 @@
  */
 package pikomino.stateMachine;
 
+import pikomino.model.GameBoard;
 import pikomino.model.Model;
+import pikomino.model.Piece;
 
 /**
  * This is an abstract class to serve as an interface to the other states.
@@ -12,46 +14,37 @@ import pikomino.model.Model;
 public abstract class State {
 	
 	protected Model pikominoModel;
+	protected GameBoard gameBoard;
 	
-    public State(Model pikominoModel) {
+    public State(Model pikominoModel, GameBoard gameBoard) {
 		this.pikominoModel = pikominoModel;
+		this.gameBoard = gameBoard;
 	}
-    
     
     /**
      * To be executed when the state starts
      */
-    public void startState() {}
+    public void enterState() {}
 
-    /** 
-     * To be executed in the beginning of the game 
-     * @return
-     */
-    public boolean gameStart()
-    {
-        return false;
-    }
-    
-    //Message when activating a state
-    abstract public void initialStateMsg();
-    
-    public Model getPikominoModel() {
-		return pikominoModel;
-	}
-
-	public void setPikominoModel(Model pikominoModel) {
-		this.pikominoModel = pikominoModel;
-	}
-    
-	/**
-     * Message when leaving a state.
-     */
-    public void endingStateMsg() {
-    }
-    
-    //Help function implemented on their own subclass  
     /**
-     * @return String Returns the text with the help message
+     * To be executed when the state starts
      */
-    public abstract String help();
+    public void exitState() {}    
+    
+     
+    public void diceRoll() {}
+    
+    public void endTurn() {}
+    
+    public void dicePick(int i) {}
+    
+    public void pieceChoice() {}
+
+    public void stealPiece() {}
+    
+    public void pickPiece(Piece piece) {}
+    
+    
+    
+    
 }
