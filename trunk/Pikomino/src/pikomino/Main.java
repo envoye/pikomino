@@ -13,7 +13,7 @@ public class Main {
 	 * @throws Exception 
 	 */
 	public static void main(String[] args) {
-
+		
 		new PikominoFrame(new Model(new GameBoard("Player1","Player2","p3"))).setVisible(true);
 
 	}
