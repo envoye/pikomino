@@ -98,7 +98,9 @@ public class Screen {
         for (int i = 0; i < model.getPlayers().size(); i++) {
             gBuffered.setColor(new Color(166, 165, 163));
             gBuffered.drawRect(626, 5 + 85 * i, 168, 80);
-            
+            gBuffered.setColor(Color.green);
+            if(model.getActualPlayerID() == i)
+            	gBuffered.fillRect(626, 5 + 85 * i, 168, 80);
             gBuffered.setColor(new Color(255, 255, 255));
             gBuffered.drawRect(627, 6 + 85 * i, 167, 79);
             
@@ -167,8 +169,8 @@ public class Screen {
         bEnd.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				// TODO Auto-generated method stub
-				//model
+
+				model.endTurn();
 			}
 		});
         

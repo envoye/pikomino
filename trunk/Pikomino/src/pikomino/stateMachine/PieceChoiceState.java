@@ -21,16 +21,11 @@ public class PieceChoiceState extends State {
 	}
 
 	@Override
-	public void pieceChoice() {
-
-		pikominoModel.setState(pikominoModel.getNewTurnState());
-	}
-
-	@Override
 	public void stealPiece() {
 		if(gameBoard.actualPlayerCanSteal())
 		{
 			gameBoard.stealPiece();
+			pikominoModel.setState(pikominoModel.getNewTurnState());
 		}
 	}
 
@@ -39,6 +34,7 @@ public class PieceChoiceState extends State {
 		if(gameBoard.actualPlayerCanPick())
 		{
 			gameBoard.takePiece();
+			pikominoModel.setState(pikominoModel.getNewTurnState());
 		}
 	}
 	
