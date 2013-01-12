@@ -30,7 +30,7 @@ public class MenuFrame extends JFrame {
 		panel = new JPanel();
 		setContentPane(panel);
 		panel.setLayout(new CardLayout(0, 0));
-		//panel.add(new PlayersPanel(), BorderLayout.CENTER);
+		panel.add(new PlayersPanel(panel), BorderLayout.CENTER);
 		this.setResizable(false);
 		
 	}
