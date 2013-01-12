@@ -1,5 +1,6 @@
 package pikomino.view;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Desktop;
 import java.awt.Font;
@@ -9,6 +10,8 @@ import java.awt.GraphicsConfiguration;
 import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
 import java.awt.Transparency;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -25,6 +28,8 @@ import javax.swing.SwingConstants;
 
 import pikomino.model.Model;
 import pikomino.view.screen.Screen;
+import javax.swing.event.MenuDragMouseListener;
+import javax.swing.event.MenuDragMouseEvent;
 
 /**
  * This class is a Panel, this panel is where all the information about the game
@@ -33,11 +38,11 @@ import pikomino.view.screen.Screen;
  * Control of the MVC.
  *
  */
+
 public class GamePanel extends JPanel {
 
 	static public int widthScreen = 800;
 	static public int heightScreen = 600;
-
 	private int posX, posY, widthImage, heightImage;
 
 	private Model model = null;
@@ -58,19 +63,27 @@ public class GamePanel extends JPanel {
 		mnMenu.setHorizontalAlignment(SwingConstants.LEFT);
 		menuBar.add(mnMenu);
 		
+		final GamePanel gamePanel = this;
 		JMenuItem mntmNewGane = new JMenuItem("New Game");
-		mntmNewGane.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-			}
-		});
 		mntmNewGane.setFont(new Font("Arial", Font.PLAIN, 12));
 		mnMenu.add(mntmNewGane);
+		mntmNewGane.addActionListener( new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {				
+				PikominoFrame.thisFrame.setVisible(false);
+				new PikominoFrame(new Model()).setVisible(true);;
+				
+			}
+		});
 		
 		JMenuItem mntmExit = new JMenuItem("Exit");
-		mntmExit.addMouseListener(new MouseAdapter() {
+		mntmExit.addActionListener( new ActionListener() {
+			
 			@Override
-			public void mouseClicked(MouseEvent e) {
+			public void actionPerformed(ActionEvent e) {
+				PikominoFrame.thisFrame.setVisible(false);
+				
 			}
 		});
 		mntmExit.setFont(new Font("Arial", Font.PLAIN, 12));
