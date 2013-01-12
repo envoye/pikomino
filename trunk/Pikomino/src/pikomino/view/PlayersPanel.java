@@ -42,11 +42,15 @@ import com.jgoodies.forms.layout.RowSpec;
  * Control of the MVC.
  *
  */
+
+
+
 public class PlayersPanel extends JPanel {
 
 	/**
 	 * 
 	 */
+	static final int MAX = 8;
 	private static final long serialVersionUID = 1L;
 	static public int widthScreen = 800;
 	static public int heightScreen = 624;
@@ -66,11 +70,11 @@ public class PlayersPanel extends JPanel {
 				FormFactory.RELATED_GAP_COLSPEC,
 				ColumnSpec.decode("196px"),
 				FormFactory.RELATED_GAP_COLSPEC,
-				ColumnSpec.decode("40px:grow"),
+				ColumnSpec.decode("40px"),
 				FormFactory.RELATED_GAP_COLSPEC,
-				ColumnSpec.decode("max(69dlu;default)"),
+				ColumnSpec.decode("69dlu"),
 				FormFactory.RELATED_GAP_COLSPEC,
-				ColumnSpec.decode("max(169dlu;default)"),
+				ColumnSpec.decode("max(177dlu;default)"),
 				FormFactory.RELATED_GAP_COLSPEC,
 				ColumnSpec.decode("max(80dlu;default)"),
 				FormFactory.RELATED_GAP_COLSPEC,
@@ -113,9 +117,9 @@ public class PlayersPanel extends JPanel {
 				FormFactory.RELATED_GAP_ROWSPEC,
 				FormFactory.DEFAULT_ROWSPEC,
 				FormFactory.RELATED_GAP_ROWSPEC,
-				RowSpec.decode("max(65dlu;default)"),
+				RowSpec.decode("max(54dlu;default)"),
 				FormFactory.RELATED_GAP_ROWSPEC,
-				RowSpec.decode("max(44dlu;default)"),});
+				RowSpec.decode("max(60dlu;default)"),});
 		formLayout.setHonorsVisibility(false);
 		setLayout(formLayout);
 				
@@ -149,7 +153,7 @@ public class PlayersPanel extends JPanel {
 		player1.setFont(new Font("Arial", Font.BOLD, 15));
 		player1.setForeground(Color.GRAY);
 		add(player1, "4, 12, 3, 1, fill, default");
-		player1.setDocument(new JTextFieldLimit(10));
+		player1.setDocument(new JTextFieldLimit(MAX));
 		player1.setColumns(10);
 		textFiels.add(player1);
 		
@@ -164,7 +168,7 @@ public class PlayersPanel extends JPanel {
 		player2.setFont(new Font("Arial", Font.BOLD, 15));
 		player2.setForeground(Color.GRAY);
 		add(player2, "4, 16, 3, 1, fill, default");
-		player2.setDocument(new JTextFieldLimit(10));
+		player2.setDocument(new JTextFieldLimit(MAX));
 		player2.setColumns(10);
 		textFiels.add(player2);
 		
@@ -178,7 +182,7 @@ public class PlayersPanel extends JPanel {
 		player3.setFont(new Font("Arial", Font.BOLD, 15));
 		player3.setForeground(Color.GRAY);
 		add(player3, "4, 20, 3, 1, fill, default");
-		player3.setDocument(new JTextFieldLimit(10));
+		player3.setDocument(new JTextFieldLimit(MAX));
 		player3.setColumns(10);
 		textFiels.add(player3);
 		
@@ -192,7 +196,7 @@ public class PlayersPanel extends JPanel {
 		player4.setFont(new Font("Arial", Font.BOLD, 15));
 		player4.setForeground(Color.GRAY);
 		add(player4, "4, 24, 3, 1, fill, default");
-		player4.setDocument(new JTextFieldLimit(10));
+		player4.setDocument(new JTextFieldLimit(MAX));
 		player4.setColumns(10);
 		textFiels.add(player4);
 		
@@ -206,7 +210,7 @@ public class PlayersPanel extends JPanel {
 		player5.setFont(new Font("Arial", Font.BOLD, 15));
 		player5.setForeground(Color.GRAY);
 		add(player5, "4, 28, 3, 1, fill, default");
-		player5.setDocument(new JTextFieldLimit(10));
+		player5.setDocument(new JTextFieldLimit(MAX));
 		player5.setColumns(10);
 		textFiels.add(player5);
 		
@@ -220,7 +224,7 @@ public class PlayersPanel extends JPanel {
 		player6.setFont(new Font("Arial", Font.BOLD, 15));
 		player6.setForeground(Color.GRAY);
 		add(player6, "4, 32, 3, 1, fill, default");
-		player6.setDocument(new JTextFieldLimit(10));
+		player6.setDocument(new JTextFieldLimit(MAX));
 		player6.setColumns(10);
 		textFiels.add(player6);
 		
@@ -234,27 +238,30 @@ public class PlayersPanel extends JPanel {
 		player7.setFont(new Font("Arial", Font.BOLD, 15));
 		player7.setForeground(Color.GRAY);
 		add(player7, "4, 36, 3, 1, fill, default");
-		player7.setDocument(new JTextFieldLimit(10));
+		player7.setDocument(new JTextFieldLimit(MAX));
 		player7.setColumns(10);
 		textFiels.add(player7);
 				
-				JButton btnPlay = new JButton("Start Play");
-				btnPlay.setForeground(new Color(139, 69, 19));
-				
-						btnPlay.setFont(new Font("Arial", Font.BOLD, 15));
-						btnPlay.addMouseListener(new MouseAdapter() {
-							@Override
-							public void mouseClicked(MouseEvent e) {
-								setNamesPlayerOfTextBox();
-								gameBoard = new GameBoard(players);
-								gamePanel.removeAll();
-								model.setGameBoard(gameBoard);
-								JPanel newGamePanel = new GamePanel(model);
-								gamePanel.add(newGamePanel, BorderLayout.CENTER);
-								gamePanel.updateUI();
-							}
-						});
-						add(btnPlay, "10, 40, default, fill");
+		JButton btnPlay = new JButton("");
+		btnPlay.setForeground(new Color(139, 69, 19));
+		btnPlay.setOpaque(false);
+		btnPlay.setFocusPainted(false);
+		btnPlay.setBorderPainted(false);
+		btnPlay.setContentAreaFilled(false);
+		btnPlay.setFont(new Font("Arial", Font.BOLD, 15));
+		btnPlay.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				setNamesPlayerOfTextBox();
+				gameBoard = new GameBoard(players);
+				gamePanel.removeAll();
+				model.setGameBoard(gameBoard);
+				JPanel newGamePanel = new GamePanel(model);
+				gamePanel.add(newGamePanel, BorderLayout.CENTER);
+				gamePanel.updateUI();
+			}
+		});
+		add(btnPlay, "10, 40, default, fill");
 		
 		comboBox.addPropertyChangeListener(new PropertyChangeListener() {
 			public void propertyChange(PropertyChangeEvent evt) {
