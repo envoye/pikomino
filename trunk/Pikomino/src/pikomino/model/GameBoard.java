@@ -2,8 +2,6 @@ package pikomino.model;
 
 import java.util.ArrayList;
 
-import javax.naming.directory.InvalidAttributesException;
-
 /**
  * This class represents all the data inside a gameboard.
  *
