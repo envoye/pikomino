@@ -240,7 +240,7 @@ public class Screen {
 			buttonsair = false;
 			model.update();
 		}else{
-			buttonhelp = true;
+			buttonsair = true;
 			model.update();
 			
 		}
