@@ -2,14 +2,11 @@ package pikomino.view;
 
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.util.Observable;
 import java.util.Observer;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
 
 import pikomino.model.Model;
 
@@ -21,6 +18,10 @@ import pikomino.model.Model;
  */
 public class PikominoFrame extends JFrame implements Observer {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private Model model;
 	private JPanel gamePanel;
 	
@@ -41,7 +42,7 @@ public class PikominoFrame extends JFrame implements Observer {
 		
 		
 		gamePanel.setLayout(new CardLayout(0, 0));
-		gamePanel.add(new MenuPanel(gamePanel), BorderLayout.CENTER);
+		gamePanel.add(new PlayersPanel(gamePanel), BorderLayout.CENTER);
 		this.setResizable(false);
 		
 		model.addObserver(this);

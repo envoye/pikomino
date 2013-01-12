@@ -1,5 +1,6 @@
 package pikomino.view;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
@@ -7,6 +8,8 @@ import java.awt.GraphicsConfiguration;
 import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
 import java.awt.Transparency;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
@@ -21,17 +24,15 @@ import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-import javax.swing.SwingConstants;
 
 import pikomino.model.GameBoard;
+import pikomino.model.Model;
 import pikomino.utils.JTextFieldLimit;
 
 import com.jgoodies.forms.factories.FormFactory;
 import com.jgoodies.forms.layout.ColumnSpec;
 import com.jgoodies.forms.layout.FormLayout;
 import com.jgoodies.forms.layout.RowSpec;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 
 /**
  * This class is a Panel, this panel is where all the information about the game
@@ -51,13 +52,14 @@ public class PlayersPanel extends JPanel {
 	
 	private GameBoard gameBoard = null;
 	
-	private String [] players = new String[7];
+	private String [] players = null;
 	private List<JLabel> labels = new ArrayList<JLabel>(); 
 	private List<JTextField> textFiels = new ArrayList<JTextField>();
 	private JComboBox<Integer> comboBox;
 
-	public PlayersPanel() {
+	public PlayersPanel(final JPanel gamePanel) {
 		super();
+		
 		setLayout(new FormLayout(new ColumnSpec[] {
 				FormFactory.RELATED_GAP_COLSPEC,
 				ColumnSpec.decode("196px"),
@@ -142,6 +144,9 @@ public class PlayersPanel extends JPanel {
 			public void mouseClicked(MouseEvent e) {
 				setNamesPlayerOfTextBox();
 				gameBoard = new GameBoard(players);
+				gamePanel.removeAll();
+				gamePanel.add(new GamePanel(new Model(gameBoard)), BorderLayout.CENTER);
+				gamePanel.repaint();
 			}
 		});
 		add(btnPlay, "10, 8");
@@ -249,7 +254,7 @@ public class PlayersPanel extends JPanel {
 			public void propertyChange(PropertyChangeEvent evt) {
 				setVisibilite();
 			}
-		});	
+		});
 	}
 	
 	public GameBoard getGameBoard() {
@@ -300,6 +305,8 @@ public class PlayersPanel extends JPanel {
 	}
 	
 	private void setNamesPlayerOfTextBox(){
+		players = new String [(Integer)comboBox.getSelectedItem()];
+		
 		for(Integer i =0; i< (Integer)comboBox.getSelectedItem(); i++){
 			String name = textFiels.get(i).getText();
 			if(name.equals("")){
