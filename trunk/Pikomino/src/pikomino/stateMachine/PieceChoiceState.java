@@ -35,10 +35,10 @@ public class PieceChoiceState extends State {
 	}
 
 	@Override
-	public void pickPiece(Piece piece) {
+	public void pickPiece() {
 		if(gameBoard.actualPlayerCanPick())
 		{
-			gameBoard.takePiece(piece);
+			gameBoard.takePiece();
 		}
 	}
 	

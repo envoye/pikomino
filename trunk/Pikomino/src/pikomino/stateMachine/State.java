@@ -42,7 +42,8 @@ public abstract class State {
 
     public void stealPiece() {}
     
-    public void pickPiece(Piece piece) {}
+	public void pickPiece() {
+	}
     
     
     

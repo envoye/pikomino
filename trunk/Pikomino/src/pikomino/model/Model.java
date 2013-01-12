@@ -165,6 +165,10 @@ public class Model extends Observable {
 		gameBoard.takePiece(piece);
 		
 	}
+	public void takePiece() {
+		state.pickPiece();
+		
+	}
 
 	public void stealPiece() {
 		gameBoard.stealPiece();
@@ -182,5 +186,7 @@ public class Model extends Observable {
 		
 		setState(newTurnState);
 	}
+
+	
 
 }
