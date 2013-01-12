@@ -35,7 +35,7 @@ public class Piece {
 		if(value < 20 || value > 36)
 		{
 			try {
-				throw new IllegalAccessException("Piece should not hava this value: " + value);
+				throw new IllegalAccessException("Piece should not have this value: " + value);
 			} catch (IllegalAccessException e) {
 				e.printStackTrace();
 			}

@@ -11,6 +11,7 @@ public class Player {
 	
 	private String name;
 	private Stack<Piece> piecesStack;
+	
 		
 	public Player(String n){
 		name = n;

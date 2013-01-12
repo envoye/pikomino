@@ -94,6 +94,46 @@ public class GameBoard {
 			x.setDieFaceValue(rollDie());
 		}
 	}
+	
+	public boolean hasWorm() {
+		// X for die
+		for (Dice x : playedDice) {
+			// if (x.getDieId() != 0)
+			if(x.getDieFaceValue() == 6)
+				return true;
+		}
+		return false;
+	}
+	
+	public boolean hasAvaliablePiece() {
+
+		if(actualPlayerCanSteal() || actualPlayerCanPick())
+			return true;
+		return false;
+		
+	}
+	
+	public boolean actualPlayerCanSteal() {
+
+		for(int i = 0; i< players.size(); i++) {
+			if(i!=actualPlayerID)
+			{
+				if(players.get(i).getTopPiece().getValue() == getTotalDicePlayed())
+					return true;
+			}
+		}
+		
+		return false;
+		
+	}
+	
+	public boolean actualPlayerCanPick() {
+
+		if(pieces.size() > 0 && pieces.get(0).getValue() <= getTotalDicePlayed())
+			return true;
+		return false;
+		
+	}
 
 //	public void selectedDice() {
 //		// X for die
