@@ -2,6 +2,7 @@ package pikomino.view;
 
 import java.awt.BorderLayout;
 import java.awt.Component;
+import java.awt.Cursor;
 import java.awt.Desktop;
 import java.awt.Font;
 import java.awt.Graphics;
@@ -9,6 +10,7 @@ import java.awt.GraphicsConfiguration;
 import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
 import java.awt.Insets;
+import java.awt.Rectangle;
 import java.awt.Transparency;
 
 import javax.swing.JButton;
@@ -26,6 +28,8 @@ import com.jgoodies.forms.factories.FormFactory;
 import javax.swing.JLabel;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseMotionListener;
 import java.io.File;
 
 /**
@@ -78,6 +82,21 @@ public class MenuPanel extends JPanel {
 				
 			}
 		});
+		
+		
+		btnHelp.addMouseMotionListener(new MouseMotionListener() {
+		    @Override
+		    public void mouseMoved(MouseEvent e) {
+		            btnHelp.setCursor(new Cursor(Cursor.HAND_CURSOR));
+		    }
+
+			@Override
+			public void mouseDragged(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
+		
 		add(btnHelp, "4, 4, 3, 3");
 		
 		btnNew = new JButton("");
@@ -94,6 +113,21 @@ public class MenuPanel extends JPanel {
 				gamePanel.updateUI();
 			}
 		});
+		
+		
+		btnNew.addMouseMotionListener(new MouseMotionListener() {
+		    @Override
+		    public void mouseMoved(MouseEvent e) {
+		    	btnNew.setCursor(new Cursor(Cursor.HAND_CURSOR));
+		    }
+
+			@Override
+			public void mouseDragged(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
+		
 		add(btnNew, "4, 10, 3, 1, default, fill");
 	
 
