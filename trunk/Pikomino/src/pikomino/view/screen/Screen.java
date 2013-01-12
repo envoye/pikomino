@@ -167,6 +167,33 @@ public class Screen {
 			}
 		});
         
+        JButton bTake = new JButton("Take");
+        bTake.setSize(70, 40);
+        bTake.setLocation(460, 341);
+        gamePanel.add(bTake);
+        
+        bTake.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				// TODO Auto-generated method stub
+				//model.takePiece(piece);
+			}
+		});
+        
+        JButton bSteal = new JButton("Steal");
+        bSteal.setSize(70, 40);
+        bSteal.setLocation(530, 341);
+        gamePanel.add(bSteal);
+        
+        bSteal.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				// TODO Auto-generated method stub
+				model.stealPiece();
+			}
+		});
+        
+        
 		///botão sair
 //		gBuffered.setColor(Color.black);
 //		gBuffered.drawRect(490, 550, 70, 40);
