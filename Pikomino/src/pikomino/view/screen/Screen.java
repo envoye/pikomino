@@ -108,30 +108,33 @@ public class Screen {
 
 		gBuffered.setColor(Color.black);
 		gBuffered.drawRect(390, 320, 70, 40);
+		if(buttonrodar==true)
 		gBuffered.setColor(new Color(122, 122, 122, 122));
+		else
+			gBuffered.setColor(new Color(182, 182, 132, 122));
 		gBuffered.fillRect(390, 320, 70, 40);
 		gBuffered.setColor(Color.black);
 		gBuffered.drawString("Roll", 415, 345);
 		
 		///botão sair
-		gBuffered.setColor(Color.black);
-		gBuffered.drawRect(490, 550, 70, 40);
-		if(buttonsair==true)
-			gBuffered.setColor(new Color(122, 122, 122, 122));
-		else
-			gBuffered.setColor(new Color(220,220,220));
-		
-		gBuffered.fillRect(490, 550, 70, 40);
-		gBuffered.setColor(Color.black);
-		gBuffered.drawString("Sair", 515, 575);
-		//help
-		gBuffered.setColor(Color.black);
-		gBuffered.drawRect(562, 550, 40, 40);
-		gBuffered.setColor(new Color(122, 122, 122, 122));
-		gBuffered.fillRect(562, 550, 40, 40);
-		gBuffered.setColor(Color.black);
-		gBuffered.drawString("Help", 565, 575);
-		
+//		gBuffered.setColor(Color.black);
+//		gBuffered.drawRect(490, 550, 70, 40);
+//		if(buttonsair==true)
+//			gBuffered.setColor(new Color(122, 122, 122, 122));
+//		else
+//			gBuffered.setColor(new Color(220,220,220));
+//		
+//		gBuffered.fillRect(490, 550, 70, 40);
+//		gBuffered.setColor(Color.black);
+//		gBuffered.drawString("Sair", 515, 575);
+//		//help
+//		gBuffered.setColor(Color.black);
+//		gBuffered.drawRect(562, 550, 40, 40);
+//		gBuffered.setColor(new Color(122, 122, 122, 122));
+//		gBuffered.fillRect(562, 550, 40, 40);
+//		gBuffered.setColor(Color.black);
+//		gBuffered.drawString("Help", 565, 575);
+//		
 		
 		
 		///botão 
@@ -215,10 +218,10 @@ public class Screen {
 		//Button "Roll" pressed
 		if(x > 390 && x < 459 && y > 320 && y < 359)
 		{
-			buttonrodar = false;
+			buttonrodar = true;
 			model.update();
 		}else{
-			buttonrodar = true;
+			buttonrodar = false;
 			model.update();
 			
 		}
