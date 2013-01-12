@@ -146,9 +146,11 @@ public class GameBoard {
 	public int getTotalDicePlayed() {
 		int diceTotal = 0;
 
-		// X for die
 		for (Dice x : playedDice) {
-			diceTotal += x.getDieFaceValue();
+			if(x.getDieFaceValue()==6)
+				diceTotal +=5;
+			else
+				diceTotal += x.getDieFaceValue();
 		}
 		return diceTotal;
 	}
@@ -164,7 +166,6 @@ public class GameBoard {
 		addPieceToBoard(piece);
 		if(piece != pieces.get(pieces.size() - 1))
 			pieces.remove(pieces.size() - 1);
-
 	}
 
 	public void moveDiceToPlayedList(int index) {
