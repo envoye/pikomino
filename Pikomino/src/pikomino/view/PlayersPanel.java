@@ -26,7 +26,9 @@ import javax.swing.JTextField;
 
 import pikomino.model.GameBoard;
 import pikomino.model.Model;
+import pikomino.utils.Images;
 import pikomino.utils.JTextFieldLimit;
+import pikomino.view.screen.Screen;
 
 import com.jgoodies.forms.factories.FormFactory;
 import com.jgoodies.forms.layout.ColumnSpec;
@@ -60,7 +62,6 @@ public class PlayersPanel extends JPanel {
 
 	public PlayersPanel(final JPanel gamePanel, final Model model) {
 		super();
-		
 		setLayout(new FormLayout(new ColumnSpec[] {
 				FormFactory.RELATED_GAP_COLSPEC,
 				ColumnSpec.decode("196px"),
@@ -69,11 +70,11 @@ public class PlayersPanel extends JPanel {
 				FormFactory.RELATED_GAP_COLSPEC,
 				ColumnSpec.decode("max(69dlu;default)"),
 				FormFactory.RELATED_GAP_COLSPEC,
-				FormFactory.DEFAULT_COLSPEC,
+				ColumnSpec.decode("max(52dlu;default)"),
 				FormFactory.RELATED_GAP_COLSPEC,
-				FormFactory.DEFAULT_COLSPEC,
+				ColumnSpec.decode("max(80dlu;default)"),
 				FormFactory.RELATED_GAP_COLSPEC,
-				ColumnSpec.decode("max(251dlu;default)"),},
+				ColumnSpec.decode("max(150dlu;default)"),},
 			new RowSpec[] {
 				FormFactory.RELATED_GAP_ROWSPEC,
 				RowSpec.decode("64px"),
@@ -113,19 +114,19 @@ public class PlayersPanel extends JPanel {
 				FormFactory.DEFAULT_ROWSPEC,
 				FormFactory.RELATED_GAP_ROWSPEC,
 				FormFactory.DEFAULT_ROWSPEC,}));
-		
+				
 		JLabel lblStartPlay = new JLabel("Players Menu");
-		lblStartPlay.setForeground(Color.WHITE);
+		lblStartPlay.setForeground(new Color(139, 69, 19));
 		lblStartPlay.setFont(new Font("Arial", Font.BOLD, 40));
 		add(lblStartPlay, "2, 2, 11, 1, center, default");
 		
 		JLabel lblNumberOfPlayers = new JLabel("Number of players:");
 		lblNumberOfPlayers.setFont(new Font("Arial", Font.BOLD, 20));
-		lblNumberOfPlayers.setForeground(Color.WHITE);
+		lblNumberOfPlayers.setForeground(new Color(139, 69, 19));
 		add(lblNumberOfPlayers, "2, 8, right, center");
 		
 		comboBox = new JComboBox<Integer>();
-		comboBox.setForeground(Color.BLACK);
+		comboBox.setForeground(new Color(139, 69, 19));
 		comboBox.setFont(new Font("Arial", Font.BOLD, 15));
 		
 		comboBox.setModel(new DefaultComboBoxModel<Integer>(new Integer[] {2, 3, 4, 5, 6, 7}));
@@ -135,6 +136,7 @@ public class PlayersPanel extends JPanel {
 		lblNumberOfPlayers.setLabelFor(comboBox);
 		
 		JButton btnPlay = new JButton("Start Play");
+		btnPlay.setForeground(new Color(139, 69, 19));
 
 		btnPlay.setFont(new Font("Arial", Font.BOLD, 15));
 		btnPlay.addMouseListener(new MouseAdapter() {
@@ -149,10 +151,10 @@ public class PlayersPanel extends JPanel {
 				gamePanel.updateUI();
 			}
 		});
-		add(btnPlay, "10, 8");
+		add(btnPlay, "10, 8, 1, 3");
 		
 		JLabel lblPlayer1 = new JLabel("Player 1:");
-		lblPlayer1.setForeground(Color.WHITE);
+		lblPlayer1.setForeground(new Color(139, 69, 19));
 		lblPlayer1.setFont(new Font("Arial", Font.BOLD, 15));
 		add(lblPlayer1, "2, 12, right, default");
 		labels.add(lblPlayer1);
@@ -167,7 +169,7 @@ public class PlayersPanel extends JPanel {
 		
 				
 		JLabel lblPlayer2 = new JLabel("Player 2:");
-		lblPlayer2.setForeground(Color.WHITE);
+		lblPlayer2.setForeground(new Color(139, 69, 19));
 		lblPlayer2.setFont(new Font("Arial", Font.BOLD, 15));
 		add(lblPlayer2, "2, 16, right, default");
 		labels.add(lblPlayer2);
@@ -181,7 +183,7 @@ public class PlayersPanel extends JPanel {
 		textFiels.add(player2);
 		
 		JLabel lblPlayer3 = new JLabel("Player 3:");
-		lblPlayer3.setForeground(Color.WHITE);
+		lblPlayer3.setForeground(new Color(139, 69, 19));
 		lblPlayer3.setFont(new Font("Arial", Font.BOLD, 15));
 		add(lblPlayer3, "2, 20, right, default");
 		labels.add(lblPlayer3);
@@ -195,7 +197,7 @@ public class PlayersPanel extends JPanel {
 		textFiels.add(player3);
 		
 		JLabel lblPlayer4 = new JLabel("Player 4:");
-		lblPlayer4.setForeground(Color.WHITE);
+		lblPlayer4.setForeground(new Color(139, 69, 19));
 		lblPlayer4.setFont(new Font("Arial", Font.BOLD, 15));
 		add(lblPlayer4, "2, 24, right, default");
 		labels.add(lblPlayer4);
@@ -209,7 +211,7 @@ public class PlayersPanel extends JPanel {
 		textFiels.add(player4);
 		
 		JLabel lblPlayer5 = new JLabel("Player 5:");
-		lblPlayer5.setForeground(Color.WHITE);
+		lblPlayer5.setForeground(new Color(139, 69, 19));
 		lblPlayer5.setFont(new Font("Arial", Font.BOLD, 15));
 		add(lblPlayer5, "2, 28, right, default");
 		labels.add(lblPlayer5);
@@ -223,7 +225,7 @@ public class PlayersPanel extends JPanel {
 		textFiels.add(player5);
 		
 		JLabel lblPlayer6 = new JLabel("Player 6:");
-		lblPlayer6.setForeground(Color.WHITE);
+		lblPlayer6.setForeground(new Color(139, 69, 19));
 		lblPlayer6.setFont(new Font("Arial", Font.BOLD, 15));
 		add(lblPlayer6, "2, 32, right, default");
 		labels.add(lblPlayer6);
@@ -237,7 +239,7 @@ public class PlayersPanel extends JPanel {
 		textFiels.add(player6);
 		
 		JLabel lblPlayer7 = new JLabel("Player 7:");
-		lblPlayer7.setForeground(Color.WHITE);
+		lblPlayer7.setForeground(new Color(139, 69, 19));
 		lblPlayer7.setFont(new Font("Arial", Font.BOLD, 15));
 		add(lblPlayer7, "2, 36, right, default");
 		labels.add(lblPlayer7);
@@ -255,38 +257,6 @@ public class PlayersPanel extends JPanel {
 				setVisibilite();
 			}
 		});
-		GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
-		GraphicsDevice gs = ge.getDefaultScreenDevice();
-		GraphicsConfiguration gc = gs.getDefaultConfiguration();
-		BufferedImage bimage = gc.createCompatibleImage(widthScreen,
-				heightScreen, Transparency.OPAQUE);
-		Graphics2D gBuffered = bimage.createGraphics();
-
-
-		if (getWidth() > getHeight() * 1.33333f) {
-			widthImage = Math.round(getHeight() + getHeight() * (1f / 3f));
-			heightImage = getHeight();
-
-			posX = Math.round(Math.max(0, (getWidth() - widthImage) / 2f));
-			posY = 0;
-
-		} else {
-			if (getWidth() < getHeight() * 1.33333f) {
-				widthImage = getWidth();
-				heightImage = Math.round(getWidth() - getWidth() * (1f / 4f));
-
-				posX = 0;
-				posY = Math
-						.round(Math.max(0, (getHeight() - heightImage) / 2f));
-
-			} else {
-				posX = 0;
-				posY = 0;
-				widthImage = getWidth();
-				heightImage = getHeight();
-			}
-		}
-	//	g.drawImage(bimage, posX, posY, widthImage, heightImage, this);
 	}
 	
 	public GameBoard getGameBoard() {
@@ -304,7 +274,7 @@ public class PlayersPanel extends JPanel {
 	public void setPlayers(String[] players) {
 		this.players = players;
 	}
-
+	
 	@Override
 	public synchronized void paintComponent(Graphics g) {
 		super.paintComponent(g);
@@ -316,12 +286,12 @@ public class PlayersPanel extends JPanel {
 
 		BufferedImage bimage = gc.createCompatibleImage(widthScreen,
 				heightScreen, Transparency.OPAQUE);
-		bimage.createGraphics();
-
-		g.setColor(Color.GRAY);
+		
 		g.fillRect(0, 0, getWidth(), getHeight());
+
+		g.drawImage(Images.getBackgroundPlayers(), 0, 0, widthScreen, heightScreen,null);
+
 	}
-	
 	private void setVisibilite(){
 		Integer i=1;
 		while(i <= (Integer)comboBox.getSelectedItem()){
