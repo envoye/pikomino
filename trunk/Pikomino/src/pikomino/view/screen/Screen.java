@@ -105,6 +105,15 @@ public class Screen {
 		gBuffered.fillRect(390, 320, 70, 40);
 		gBuffered.setColor(Color.black);
 		gBuffered.drawString("Roll", 415, 345);
+		
+		///botão sair
+		gBuffered.setColor(Color.black);
+		gBuffered.drawRect(390, 550, 70, 40);
+		gBuffered.setColor(new Color(122, 122, 122, 122));
+		gBuffered.fillRect(390, 550, 70, 40);
+		gBuffered.setColor(Color.black);
+		gBuffered.drawString("Sair", 415, 575);
+		///botão sair
 
 		Player actual = model.getPlayers().get(model.getActualPlayer());
 		if(!actual.getPiecesStack().isEmpty())
