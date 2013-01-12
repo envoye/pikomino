@@ -141,12 +141,8 @@ public class PlayersPanel extends JPanel {
 				gameBoard = new GameBoard(players);
 				gamePanel.removeAll();
 				JPanel newGamePanel = new GamePanel(new Model(gameBoard));
-				newGamePanel.repaint();
 				gamePanel.add(newGamePanel, BorderLayout.CENTER);
-				gamePanel.invalidate();
-				gamePanel.repaint();
-				gamePanel.invalidate();
-				newGamePanel.repaint();
+				gamePanel.updateUI();
 			}
 		});
 		add(btnPlay, "10, 8");
