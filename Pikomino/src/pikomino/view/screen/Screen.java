@@ -106,12 +106,21 @@ public class Screen {
 
         }
 
-		gBuffered.setColor(Color.black);
-		gBuffered.drawRect(390, 320, 70, 40);
-		if(buttonrodar==true)
-		gBuffered.setColor(new Color(122, 122, 122, 122));
-		else
+		
+		if(buttonrodar){
+			gBuffered.setColor(Color.CYAN);
+			gBuffered.drawRect(390, 320, 70, 40);
+			gBuffered.setColor(new Color(122, 122, 122, 122));	
+			
+			
+			
+		}
+		else{
+			gBuffered.setColor(Color.WHITE);
+			gBuffered.drawRect(390, 320, 70, 40);
 			gBuffered.setColor(new Color(182, 182, 132, 122));
+			
+		}
 		gBuffered.fillRect(390, 320, 70, 40);
 		gBuffered.setColor(Color.black);
 		gBuffered.drawString("Roll", 415, 345);
