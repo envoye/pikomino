@@ -20,12 +20,12 @@ public class DicePickState extends State {
 	}
 	@Override
 	public void dicePick(int i) {
-		gameBoard.moveDiceToPlayedList(i);
-		
+		if(!gameBoard.moveDiceToPlayedList(i))
+			return;
 
 		if(gameBoard.getPlayableDice().size() > 0) {
 			//Go back to roll dice state
-			
+			pikominoModel.setState(pikominoModel.getDiceRollState());
 		} else {
 			if(gameBoard.hasWorm() && gameBoard.hasAvaliablePiece())
 			{

@@ -69,10 +69,14 @@ public class Player {
 	}
 	
 	public Piece takePiecesStack(){
+		if(piecesStack.isEmpty())
+			return null;
 		return piecesStack.pop();
 	}
 	
 	public Piece getTopPiece(){
+		if(piecesStack.isEmpty())
+			return null;
 		return piecesStack.peek();
 	}
 }

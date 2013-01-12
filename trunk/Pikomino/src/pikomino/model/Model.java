@@ -33,6 +33,7 @@ public class Model extends Observable {
 
 	public void setState(State state) {
 		this.state = state;
+		state.enterState();
 	}
 
 	public State getState() {
@@ -60,7 +61,7 @@ public class Model extends Observable {
 	}
 
 	public Model() {
-		super();
+		
 	}
 
 	public Model(GameBoard gameBoard) {
@@ -73,7 +74,7 @@ public class Model extends Observable {
 		newTurnState = new NewTurnState(this, gameBoard);
 		endGameState = new EndGameState(this, gameBoard);
 		
-		state = newTurnState;
+		setState(newTurnState);
 		
 		setChanged();
 		notifyObservers();
@@ -172,6 +173,14 @@ public class Model extends Observable {
 	
 	public void setGameBoard(GameBoard gameBoard){
 		this.gameBoard = gameBoard;
+		
+		dicePickState = new DicePickState(this, gameBoard);
+		diceRollState = new DiceRollState(this, gameBoard);
+		pieceChoiceState = new PieceChoiceState(this, gameBoard);
+		newTurnState = new NewTurnState(this, gameBoard);
+		endGameState = new EndGameState(this, gameBoard);
+		
+		setState(newTurnState);
 	}
 
 }
