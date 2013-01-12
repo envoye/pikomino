@@ -1,8 +1,8 @@
 package pikomino.view;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Component;
+import java.awt.Desktop;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.GraphicsConfiguration;
@@ -11,18 +11,22 @@ import java.awt.GraphicsEnvironment;
 import java.awt.Insets;
 import java.awt.Transparency;
 
-import javax.swing.BorderFactory;
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.Border;
 import pikomino.model.Model;
 import pikomino.utils.Images;
 import pikomino.view.screen.Screen;
-import java.awt.GridLayout;
+import java.awt.image.BufferedImage;
+import com.jgoodies.forms.layout.FormLayout;
+import com.jgoodies.forms.layout.ColumnSpec;
+import com.jgoodies.forms.layout.RowSpec;
+import com.jgoodies.forms.factories.FormFactory;
+import javax.swing.JLabel;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import java.awt.image.BufferedImage;
+import java.io.File;
 
 /**
  * This class is a Panel, this panel is where all the information about the game
@@ -32,61 +36,56 @@ import java.awt.image.BufferedImage;
  *
  */
 public class MenuPanel extends JPanel {
-	private JPanel gamePanel;
-	private JButton btnNewGame, btnRules, exitProg, j, icon;
-	private static Font letra = new Font("Verdana", Font.PLAIN, 20);
 	
 	public MenuPanel(final JPanel gamePanel, final Model model) {
+		setLayout(new FormLayout(new ColumnSpec[] {
+				FormFactory.RELATED_GAP_COLSPEC,
+				ColumnSpec.decode("655px"),
+				FormFactory.RELATED_GAP_COLSPEC,
+				FormFactory.DEFAULT_COLSPEC,
+				FormFactory.RELATED_GAP_COLSPEC,
+				ColumnSpec.decode("85px"),},
+			new RowSpec[] {
+				FormFactory.RELATED_GAP_ROWSPEC,
+				FormFactory.DEFAULT_ROWSPEC,
+				FormFactory.RELATED_GAP_ROWSPEC,
+				RowSpec.decode("max(14dlu;default)"),
+				FormFactory.RELATED_GAP_ROWSPEC,
+				RowSpec.decode("45dlu"),
+				FormFactory.RELATED_GAP_ROWSPEC,
+				RowSpec.decode("365px"),
+				FormFactory.RELATED_GAP_ROWSPEC,
+				RowSpec.decode("90px"),
+				FormFactory.RELATED_GAP_ROWSPEC,
+				FormFactory.DEFAULT_ROWSPEC,
+				FormFactory.RELATED_GAP_ROWSPEC,
+				FormFactory.DEFAULT_ROWSPEC,}));
 		
-		for(int i=0; i<4; i++){
-			JButton j;
-			
-			j = new JButton("");
-			j.setVisible(false);
-			add(j);
-		}
+		btnHelp = new JButton("");
+		btnHelp.setOpaque(false);
+		btnHelp.setFocusPainted(false);
+		btnHelp.setBorderPainted(false);
+		btnHelp.setContentAreaFilled(false);
+		btnHelp.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				File pdf = new File("Data\\Images\\Manual\\regras_pickomino_br.pdf");  
+				try {  
+				  Desktop.getDesktop().open(pdf);  
+				} catch(Exception ex) {  
+				  ex.printStackTrace();  
+				  JOptionPane.showMessageDialog(null, "Não é possivel mostrar ajuda!");  
+				}
+				
+			}
+		});
+		add(btnHelp, "4, 4, 3, 3");
 		
-		/*Image img = icon.getImage() ;  
-		   Image newimg = img.getScaledInstance( NEW_WIDTH, NEW_HEIGHT,  java.awt.Image.SCALE_SMOOTH ) ;  
-		   icon = new ImageIcon( newimg );*/
-		
-		
-		icon = new JButton(new ImageIcon("Data\\Images\\pic.png"));
-		icon.setBorder(BorderFactory.createEmptyBorder(0,0,0,0));
-		icon.setOpaque(false);
-		icon.setFocusPainted(false);
-		icon.setBorderPainted(false);
-		icon.setContentAreaFilled(false);
-		
-		
-		add(icon);
-		
-		for(int i=0; i<4; i++){
-			JButton j;
-			
-			j = new JButton("");
-			j.setVisible(false);
-			add(j);
-		}
-		
-		this.gamePanel = gamePanel;
-		setLayout(new GridLayout(7, 3, 0, 0));
-		setBackground(new Color(224, 241, 251));
-		
-		j = new JButton("");
-		j.setVisible(false);
-		add(j);
-		
-		btnNewGame = new JButton("New Game");
-		btnNewGame.setBackground(new Color(0, 221, 221));
-		btnNewGame.setFont(letra);
-		//btnNewGame.setBorder(BorderFactory.createEmptyBorder(0,0,0,0));
-		//btnNewGame.setOpaque(false);
-		btnNewGame.setFocusPainted(false);
-		//btnNewGame.setBorderPainted(false);
-		//btnNewGame.setContentAreaFilled(false);
-		btnNewGame.setBorder(new RoundedBorder(10));
-		btnNewGame.addActionListener(new ActionListener() {
+		btnNew = new JButton("");
+		btnNew.setOpaque(false);
+		btnNew.setFocusPainted(false);
+		btnNew.setBorderPainted(false);
+		btnNew.setContentAreaFilled(false);
+		btnNew.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
 				gamePanel.removeAll();
@@ -95,40 +94,8 @@ public class MenuPanel extends JPanel {
 				gamePanel.updateUI();
 			}
 		});
-		add(btnNewGame);
-		
-		
-		for(int i=0; i<5; i++){
-			JButton j;
-			
-			j = new JButton("");
-			j.setVisible(false);
-			add(j);
-		}
-		
-		
-		btnRules = new JButton("Rules");
-		btnRules.setBackground(new Color(0, 221, 221));
-		btnRules.setFont(letra);
-		btnRules.setFocusPainted(false);
-		btnRules.setBorder(new RoundedBorder(10));
-		btnRules.setVisible(false);
-		btnRules.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				
-				
-			}
-		});
-		add(btnRules);
-		
-
-		for(int i=0; i<4; i++){
-			JButton j;
-			
-			j = new JButton("");
-			j.setVisible(false);
-			add(j);
-		}
+		add(btnNew, "4, 10, 3, 1, default, fill");
+	
 
 		
 		
@@ -186,5 +153,7 @@ public class MenuPanel extends JPanel {
 	private Model model = null;
 
 	Screen screen;
+	private JButton btnNew;
+	private JButton btnHelp;
 
 }
