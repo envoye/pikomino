@@ -179,7 +179,7 @@ public class MenuPanel extends JPanel {
     }
 	
 	static public int widthScreen = 800;
-	static public int heightScreen = 600;
+	static public int heightScreen = 624;
 
 	private int posX, posY, widthImage, heightImage;
 
