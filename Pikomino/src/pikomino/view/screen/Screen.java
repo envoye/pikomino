@@ -74,34 +74,34 @@ public class Screen {
 		}
 
 		//gBuffered.drawRect(620, 0, 179, 600);
-		//gBuffered.drawRect(380, 300, 240, 300);
-		gBuffered.setStroke(new BasicStroke(1, BasicStroke.CAP_ROUND,
-				BasicStroke.JOIN_ROUND));
+        //gBuffered.drawRect(380, 300, 240, 300);
+        gBuffered.setStroke(new BasicStroke(1, BasicStroke.CAP_ROUND,
+                BasicStroke.JOIN_ROUND));
 
-		for (int i = 0; i < model.getPlayers().size(); i++) {
-			gBuffered.setColor(new Color(166, 165, 163));
-			gBuffered.drawRect(626, 5 + 85 * i, 168, 80);
-			
-			gBuffered.setColor(new Color(255, 255, 255));
-			gBuffered.drawRect(627, 6 + 85 * i, 167, 79);
-			
-			//gBuffered.setColor(new Color(122, 122, 122, 122));
-			//gBuffered.fillRect(626, 5 + 85 * i, 168, 80);
+        for (int i = 0; i < model.getPlayers().size(); i++) {
+            gBuffered.setColor(new Color(166, 165, 163));
+            gBuffered.drawRect(626, 5 + 85 * i, 168, 80);
+            
+            gBuffered.setColor(new Color(255, 255, 255));
+            gBuffered.drawRect(627, 6 + 85 * i, 167, 79);
+            
+            //gBuffered.setColor(new Color(122, 122, 122, 122));
+            //gBuffered.fillRect(626, 5 + 85 * i, 168, 80);
 
-			if (model.getPlayers().get(i).getPiecesStack().size() != 0)
-				gBuffered.drawImage(
-						Images.getImageOf(model.getPlayers().get(i)
-								.getTopPiece()), 626, 5 + 85 * i, 50, 80, null);
+            if (model.getPlayers().get(i).getPiecesStack().size() != 0)
+                gBuffered.drawImage(
+                        Images.getImageOf(model.getPlayers().get(i)
+                                .getTopPiece()), 626, 5 + 85 * i, 50, 80, null);
 
-			gBuffered.setColor(Color.black);
-			gBuffered.drawString(model.getPlayers().get(i).getName(), 680,
-					85 * i + 20);
-			gBuffered.drawString("Biggest", 740, 85 * i + 20);
-			gBuffered.drawString("22", 740, 85 * i + 40);
-			gBuffered.drawString("Worms", 740, 85 * i + 60);
-			gBuffered.drawString("14", 740, 85 * i + 80);
+            gBuffered.setColor(Color.black);
+            gBuffered.drawString(model.getPlayers().get(i).getName(), 680,
+                    85 * i + 20);
+            gBuffered.drawString("Biggest", 740, 85 * i + 20);
+            gBuffered.drawString("22", 740, 85 * i + 40);
+            gBuffered.drawString("Worms", 740, 85 * i + 60);
+            gBuffered.drawString("14", 740, 85 * i + 80);
 
-		}
+        }
 
 		gBuffered.setColor(Color.black);
 		gBuffered.drawRect(390, 320, 70, 40);
