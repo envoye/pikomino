@@ -3,16 +3,11 @@ package pikomino.view.screen;
 import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Desktop;
-import java.awt.Font;
 import java.awt.Graphics2D;
 import java.awt.geom.Rectangle2D;
 import java.io.File;
-import java.util.ArrayList;
 import java.util.List;
 
-import javax.swing.BorderFactory;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
 import javax.swing.JOptionPane;
 
 import pikomino.model.Dice;
