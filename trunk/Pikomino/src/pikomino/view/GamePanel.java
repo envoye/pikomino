@@ -22,6 +22,7 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 import javax.swing.SwingConstants;
+import java.awt.Font;
 
 /**
  * This class is a Panel, this panel is where all the information about the game
@@ -51,16 +52,20 @@ public class GamePanel extends JPanel {
 		add(menuBar);
 		
 		JMenu mnMenu = new JMenu("Menu");
+		mnMenu.setFont(new Font("Arial", Font.PLAIN, 12));
 		mnMenu.setHorizontalAlignment(SwingConstants.LEFT);
 		menuBar.add(mnMenu);
 		
 		JMenuItem mntmNewGane = new JMenuItem("New Gane");
+		mntmNewGane.setFont(new Font("Arial", Font.PLAIN, 12));
 		mnMenu.add(mntmNewGane);
 		
 		JMenuItem mntmExit = new JMenuItem("Exit");
+		mntmExit.setFont(new Font("Arial", Font.PLAIN, 12));
 		mnMenu.add(mntmExit);
 		
 		JMenu mnHelp = new JMenu("Help");
+		mnHelp.setFont(new Font("Arial", Font.PLAIN, 12));
 		menuBar.add(mnHelp);
 
 		this.addMouseListener(new ClickListener());
