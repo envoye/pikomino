@@ -176,7 +176,7 @@ public class Screen {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				// TODO Auto-generated method stub
-				//model.takePiece(piece);
+				model.takePiece();
 			}
 		});
         
@@ -222,7 +222,7 @@ public class Screen {
 					null);
 		}
 		gBuffered.setColor(Color.black);
-		gBuffered.drawString(actual.getName(), 550, 330);
+		gBuffered.drawString(actual.getName(), 550, 430);
 		gBuffered.drawString("Biggest", 550, 450);
 		gBuffered.drawString(String.valueOf(actual.biggestNumber()), 550, 475);
 		gBuffered.drawString("Worms", 550, 500);
