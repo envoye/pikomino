@@ -108,7 +108,7 @@ public class Screen {
 
 		
 		if(buttonrodar){
-			gBuffered.setColor(Color.CYAN);
+			gBuffered.setColor(new Color(33, 103, 204));
 			gBuffered.drawRect(390, 320, 70, 40);
 			gBuffered.setColor(new Color(122, 122, 122, 122));	
 			
