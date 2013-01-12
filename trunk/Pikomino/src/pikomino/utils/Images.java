@@ -20,6 +20,7 @@ public class Images {
 	private static HashMap<Integer, BufferedImage> diceImages = new HashMap<Integer, BufferedImage>();
 	private static HashMap<Integer, BufferedImage> piecesImages = new HashMap<Integer, BufferedImage>();
 	
+	private static BufferedImage inicio = null;
 	private static BufferedImage background = null;
 	private static BufferedImage backgroundPlayers = null;
 	private static BufferedImage minhoca1 = null;
@@ -30,6 +31,7 @@ public class Images {
 	
     static {
         try {
+        	inicio = ImageIO.read(new File("Data\\Images\\bgroundInicio.png"));
         	backgroundPlayers = ImageIO.read(new File("Data\\Images\\bgroundForm.png"));
         	background = ImageIO.read(new File("Data\\Images\\Background.png"));
         	//minhoca1 = ImageIO.read(new File("Data\\Images\\Background.jpg"));
@@ -103,6 +105,11 @@ public class Images {
 	public static BufferedImage getBackground() {
 		return background;
 	}
+	
+	public static BufferedImage getInicio() {
+		return inicio;
+	}
+	
 	public static BufferedImage getBackgroundPlayers() {
 		return backgroundPlayers;
 	}
