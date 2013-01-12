@@ -21,11 +21,20 @@ public class Images {
 	private static HashMap<Integer, BufferedImage> piecesImages = new HashMap<Integer, BufferedImage>();
 	
 	private static BufferedImage background = null;
+	private static BufferedImage minhoca1 = null;
+	private static BufferedImage minhoca2 = null;
+	private static BufferedImage pic1 = null;
+	private static BufferedImage pic2 = null;
+	
 	
     static {
         try {
         	
         	background = ImageIO.read(new File("Data\\Images\\Background.jpg"));
+        	//minhoca1 = ImageIO.read(new File("Data\\Images\\Background.jpg"));
+        	//minhoca2 = ImageIO.read(new File("Data\\Images\\Background.jpg"));
+        	//pic1 = ImageIO.read(new File("Data\\Images\\Background.jpg"));
+        	//pic2 = ImageIO.read(new File("Data\\Images\\Background.jpg"));
 
             diceImages.put(6, ImageIO.read(new File("Data\\Images\\Dice\\DieWorm.png")));
             diceImages.put(5, ImageIO.read(new File("Data\\Images\\Dice\\Die5.png")));
