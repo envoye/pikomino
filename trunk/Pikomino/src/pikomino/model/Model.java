@@ -13,9 +13,6 @@ import java.util.Observable;
 public class Model extends Observable {
 	private GameBoard gameBoard;
 
-	public Model() {
-	}
-	
 	public Model(GameBoard gameBoard) {
 		
 		this.gameBoard = gameBoard;
@@ -58,6 +55,16 @@ public class Model extends Observable {
 		notifyObservers();
 	}
 	
+	public boolean hasWorm() {
+
+		return gameBoard.hasWorm();
+	}
+	
+	public boolean hasAvaliablePiece() {
+
+		return gameBoard.hasAvaliablePiece();
+	}
+	
 	public int getTotalDicePlayed() {
 		return gameBoard.getTotalDicePlayed();
 	}
@@ -76,10 +83,6 @@ public class Model extends Observable {
 	
 	public int getActualPlayer() {
 		return gameBoard.getActualPlayerID();
-	}
-
-	public void setGameBoard(GameBoard gameBoard) {
-		this.gameBoard = gameBoard;	
 	}
 
 }
