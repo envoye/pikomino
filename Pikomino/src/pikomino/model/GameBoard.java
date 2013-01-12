@@ -162,7 +162,8 @@ public class GameBoard {
 	public void returnPiece() {
 		Piece piece = players.get(actualPlayerID).takePiecesStack();
 		addPieceToBoard(piece);
-		pieces.remove(pieces.size() - 1);
+		if(piece != pieces.get(pieces.size() - 1))
+			pieces.remove(pieces.size() - 1);
 
 	}
 
