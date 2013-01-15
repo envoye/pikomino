@@ -34,8 +34,26 @@ public class PieceChoiceState extends State {
 		if(gameBoard.actualPlayerCanPick())
 		{
 			gameBoard.takePiece();
+			if(gameBoard.getPieces().size() == 0){
+				pikominoModel.setState(pikominoModel.getEndGameState());
+				return;
+			}
 			pikominoModel.setState(pikominoModel.getNewTurnState());
 		}
+	}
+	
+	@Override
+	public boolean canSteal() {
+		if(gameBoard.actualPlayerCanSteal())
+			return true;
+		return false;
+	}
+	
+	@Override
+	public boolean canPick() {
+		if(gameBoard.actualPlayerCanPick())
+			return true;
+		return false;
 	}
 	
 }

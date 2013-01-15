@@ -1,23 +1,20 @@
 package pikomino.view.screen;
 
+import java.awt.AlphaComposite;
 import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Cursor;
-import java.awt.Desktop;
 import java.awt.Font;
 import java.awt.Graphics2D;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.geom.Rectangle2D;
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.JButton;
-import javax.swing.JOptionPane;
 
 import pikomino.model.Dice;
-import pikomino.model.GameBoard;
 import pikomino.model.Model;
 import pikomino.model.Piece;
 import pikomino.model.Player;
@@ -45,13 +42,57 @@ public class Screen {
 	protected GamePanel gamePanel;
 	protected Model model;
 	protected int widthScreen, heightScreen;
+	
+	JButton btroll;
+	JButton bTake;
+	JButton bSteal;
 
-	public Screen(GamePanel gamePanel, Model model, int widthScreen,
+	public Screen(GamePanel gamePanel, final Model model, int widthScreen,
 			int heightScreen) {
 		this.gamePanel = gamePanel;
 		this.model = model;
 		this.widthScreen = widthScreen;
 		this.heightScreen = heightScreen;
+		
+		btroll = new JButton("Roll");
+        btroll.setSize(80, 40);
+        btroll.setLocation(390, 341);
+        gamePanel.add(btroll);
+        
+        btroll.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				// TODO Auto-generated method stub
+				model.rollDice();
+			}
+		});
+        
+        bTake = new JButton("Take");
+        bTake.setSize(80, 40);
+        bTake.setLocation(390, 381);
+        gamePanel.add(bTake);
+        
+        bTake.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				// TODO Auto-generated method stub
+				model.takePiece();
+			}
+		});
+        
+        bSteal = new JButton("Steal");
+        bSteal.setSize(80, 40);
+        bSteal.setLocation(390, 421);
+        gamePanel.add(bSteal);
+        
+        bSteal.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				// TODO Auto-generated method stub
+				model.stealPiece();
+			}
+		});
+        
 	}
 
 	public void render(Graphics2D gBuffered) {
@@ -75,12 +116,18 @@ public class Screen {
 		List<Dice> playableDices = model.getPlayableDice();
 		//gBuffered.drawRect(0, 300, 380, 150);
 		for (int i = 0; i < playableDices.size(); i++) {
-			if(i==saveddice)
+			if(saveddice>=0 && saveddice < playableDices.size() && 
+					playableDices.get(i).getDieFaceValue()==playableDices.get(saveddice).getDieFaceValue())
+			{
 				gBuffered.drawImage(Images.getImageOf(playableDices.get(i)),
 						30 + (i % 4) * 87-5, 310 + 70 * (i / 4)-5, 70, 70, null);
-				else
-					gBuffered.drawImage(Images.getImageOf(playableDices.get(i)),
-							30 + (i % 4) * 87, 310 + 70 * (i / 4), 60, 60, null);
+				
+			}
+			else
+			{
+				gBuffered.drawImage(Images.getImageOf(playableDices.get(i)),
+						30 + (i % 4) * 87, 310 + 70 * (i / 4), 60, 60, null);
+			}
 		}
 
 		List<Dice> playedDices = model.getPlayedDice();
@@ -116,9 +163,9 @@ public class Screen {
             gBuffered.drawString(model.getPlayers().get(i).getName(), 680,
                     85 * i + 20);
             gBuffered.drawString("Biggest", 740, 85 * i + 20);
-            gBuffered.drawString("22", 740, 85 * i + 40);
+            gBuffered.drawString(""+ model.getPlayers().get(i).biggestNumber(), 740, 85 * i + 40);
             gBuffered.drawString("Worms", 740, 85 * i + 60);
-            gBuffered.drawString("14", 740, 85 * i + 80);
+            gBuffered.drawString(""+ model.getPlayers().get(i).totalWorms(), 740, 85 * i + 80);
 
         }
 
@@ -156,57 +203,25 @@ public class Screen {
 		gBuffered.drawString("Roll", 415, 345);
 		*/
         
-        JButton btroll = new JButton("Roll");
-        btroll.setSize(80, 40);
-        btroll.setLocation(390, 341);
-        gamePanel.add(btroll);
         
-        JButton bEnd = new JButton("End Turn");
-        bEnd.setSize(80, 40);
-        bEnd.setLocation(390, 381);
-        gamePanel.add(bEnd);
+        if(model.canRoll())
+        	btroll.setEnabled(true);
+        else
+        	btroll.setEnabled(false);
         
-        bEnd.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-
-				model.endTurn();
-			}
-		});
         
-        btroll.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				// TODO Auto-generated method stub
-				model.rollDice();
-			}
-		});
+        if(model.canPick())
+        	bTake.setEnabled(true);
+        else
+        	bTake.setEnabled(false);
         
-        JButton bTake = new JButton("Take");
-        bTake.setSize(80, 40);
-        bTake.setLocation(390, 421);
-        gamePanel.add(bTake);
         
-        bTake.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				// TODO Auto-generated method stub
-				model.takePiece();
-			}
-		});
+        if(model.canSteal())
+        	bSteal.setEnabled(true);
+        else
+        	bSteal.setEnabled(false);
         
-        JButton bSteal = new JButton("Steal");
-        bSteal.setSize(80, 40);
-        bSteal.setLocation(390, 461);
-        gamePanel.add(bSteal);
         
-        bSteal.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				// TODO Auto-generated method stub
-				model.stealPiece();
-			}
-		});
         
         
 		///botão sair
@@ -245,6 +260,13 @@ public class Screen {
 
 		gBuffered.drawString("Dice points", 390, 500);
 		gBuffered.drawString(String.valueOf(model.getTotalDicePlayed()), 390, 525);
+		
+		if(model.isGameOver())
+        {
+        	gBuffered.setColor(Color.red);
+        	gBuffered.setFont(new Font("Arial", Font.BOLD, 33));
+        	gBuffered.drawString("Game Over", 310, 290);
+        }
 	}
 
 	public void render(Graphics2D gBuffered, int widthScreen, int heightScreen) {
@@ -288,7 +310,7 @@ public class Screen {
 //			return;
 //		}
 		
-		
+		y-=21;
 		for (int i = 0; i < model.getPlayableDice().size(); i++) {
 			
 			if(x > (30 + (i % 4) * 87) && x < (90 + (i % 4) * 87) && y > (310 + 70 * (i / 4)) && y < (370 + 70 * (i / 4)))
@@ -316,10 +338,11 @@ public class Screen {
 			
 		}
 	
-		
+		y-=21;
 		ArrayList<Dice> p = model.getPlayedDice();
 		for (int i = 0; i < model.getPlayableDice().size(); i++) {
-			if(x > (30 + (i % 4) * 87) && x < (90 + (i % 4) * 87) && y > (310 + 70 * (i / 4)) && y < (370 + 70 * (i / 4)))
+			if(model.canPickDice() && x > (30 + (i % 4) * 87) &&
+					x < (90 + (i % 4) * 87) && y > (310 + 70 * (i / 4)) && y < (370 + 70 * (i / 4)))
 			{
 				int face = model.getPlayableDice().get(i).getDieFaceValue();
 				Boolean b = true;

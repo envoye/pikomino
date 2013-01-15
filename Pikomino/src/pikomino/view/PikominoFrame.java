@@ -33,7 +33,7 @@ public class PikominoFrame extends JFrame implements Observer {
 	public PikominoFrame(Model model) {
 		this.thisFrame = this;
 		this.model = model;
-		this.setTitle("Pikomino");
+		this.setTitle("Pickomino");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 806, 647);
 		

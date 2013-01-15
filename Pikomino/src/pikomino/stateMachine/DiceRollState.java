@@ -40,19 +40,59 @@ public class DiceRollState extends State {
 				return;
 			}
 			pikominoModel.setState(pikominoModel.getNewTurnState());
-			
+			return;
 		}
 			
 		pikominoModel.setState(pikominoModel.getDicePickState());
 	}
+	
+	@Override
+	public boolean canRoll() {
+		return true;
+	}
+	
+	@Override
+	public void stealPiece() {
+		if(canEndTurn() && gameBoard.actualPlayerCanSteal())
+		{
+			gameBoard.stealPiece();
+			pikominoModel.setState(pikominoModel.getNewTurnState());
+		}
+	}
+	
+	@Override
+	public boolean canSteal() {
+		if(canEndTurn() && gameBoard.actualPlayerCanSteal())
+			return true;
+		return false;
+	}
 
 	@Override
-	public void endTurn() {
+	public void pickPiece() {
+		if(canEndTurn() && gameBoard.actualPlayerCanPick())
+		{
+			gameBoard.takePiece();
+			if(gameBoard.getPieces().size() == 0){
+				pikominoModel.setState(pikominoModel.getEndGameState());
+				return;
+			}
+			pikominoModel.setState(pikominoModel.getNewTurnState());
+		}
+	}
+	
+	@Override
+	public boolean canPick() {
+		if(canEndTurn() && gameBoard.actualPlayerCanPick())
+			return true;
+		return false;
+	}
+	
+	private boolean canEndTurn() {
 		if(gameBoard.hasWorm() && gameBoard.hasAvaliablePiece())
 		{
-			pikominoModel.setState(pikominoModel.getPieceChoiceState());
+			return true;
 		}
-
+		return false;
 	}
 
 }

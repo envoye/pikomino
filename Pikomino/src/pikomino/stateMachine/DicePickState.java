@@ -43,6 +43,9 @@ public class DicePickState extends State {
 		}
 	}
 	
-	
+	@Override
+	public boolean canPickDice() {
+		return true;
+	}
 
 }
