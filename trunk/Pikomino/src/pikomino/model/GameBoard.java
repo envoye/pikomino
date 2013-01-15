@@ -177,7 +177,7 @@ public class GameBoard {
 		Piece piece = players.get(actualPlayerID).takePiecesStack();
 		if(piece != null)
 		addPieceToBoard(piece);
-		if(piece.getValue() != pieces.get(pieces.size() - 1).getValue())
+		if(piece != pieces.get(pieces.size() - 1))
 			pieces.remove(pieces.size() - 1);
 
 	}
