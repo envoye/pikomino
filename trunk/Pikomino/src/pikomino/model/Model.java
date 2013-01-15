@@ -175,7 +175,7 @@ public class Model extends Observable {
 	}
 
 	public void stealPiece() {
-		gameBoard.stealPiece();
+		state.stealPiece();
 		setChanged();
 		notifyObservers();
 		
@@ -195,18 +195,30 @@ public class Model extends Observable {
 		notifyObservers();
 	}
 
-	public void endTurn() {
-		state.endTurn();
-		setChanged();
-		notifyObservers();
-		
-	}
-
 	public int getActualPlayerID() {
 		// TODO Auto-generated method stub
 		return gameBoard.getActualPlayerID();
 	}
 
+	public boolean canRoll() {
+		return state.canRoll();
+	}
+
+	public boolean canPick() {
+		return state.canPick();
+	}
 	
+	public boolean canSteal() {
+		return state.canSteal();
+	}
+
+	public boolean canPickDice() {
+		return state.canPickDice();
+	}
+
+	public boolean isGameOver() {
+		// TODO Auto-generated method stub
+		return state.isGameOver();
+	}
 
 }

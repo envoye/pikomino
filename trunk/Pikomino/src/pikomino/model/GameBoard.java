@@ -162,12 +162,11 @@ public class GameBoard {
 	}
 	
 	public void takePiece() {
-		for(int i = 0 ; i< pieces.size() ; i++)
+		for(int i = pieces.size() - 1 ; i >= 0 ; i--)
 		{
-			if(pieces.get(i).getValue() > getTotalDicePlayed() && i!=0)
+			if(pieces.get(i).getValue() <= getTotalDicePlayed())
 			{
-				players.get(actualPlayerID).addPiecesStack(pieces.get(i-1));
-				pieces.remove(pieces.get(i-1));
+				players.get(actualPlayerID).addPiecesStack(pieces.remove(i));
 				return;
 			}
 		}
@@ -178,7 +177,7 @@ public class GameBoard {
 		Piece piece = players.get(actualPlayerID).takePiecesStack();
 		if(piece != null)
 		addPieceToBoard(piece);
-		if(piece != pieces.get(pieces.size() - 1))
+		if(piece.getValue() != pieces.get(pieces.size() - 1).getValue())
 			pieces.remove(pieces.size() - 1);
 
 	}
@@ -193,7 +192,7 @@ public class GameBoard {
 		for (int i = 0 ; i < playableDice.size() ; i++) {
 			if (die_toRemove.getDieFaceValue() == playableDice.get(i).getDieFaceValue()) {
 				playableDice.remove(i);
-				playedDice.add(die_toRemove);
+				playedDice.add(Dice.createDice(die_toRemove.getDieFaceValue()));
 				i--;
 			}
 		}
@@ -203,14 +202,15 @@ public class GameBoard {
 	private void addPieceToBoard(Piece p) {
 		if (p.getValue() < pieces.get(0).getValue()) {
 			pieces.add(0, p);
-		} else if (p.getValue() < pieces.get(pieces.size() - 1).getValue()) {
+		} else if (p.getValue() > pieces.get(pieces.size() - 1).getValue()) {
 			pieces.add(pieces.size(), p);
 		} else {
 
-			for (int i = 1; i < pieces.size() - 1; i++) {
+			for (int i = 0; i < pieces.size() - 2; i++) {
 				if (pieces.get(i).getValue() > p.getValue()
-						&& pieces.get(i + 1).getValue() < p.getValue()) {
+						) {
 					pieces.add(i, p);
+					break;
 				}
 			}
 		}

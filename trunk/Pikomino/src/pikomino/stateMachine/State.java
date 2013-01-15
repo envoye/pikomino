@@ -34,16 +34,32 @@ public abstract class State {
      
     public void diceRoll() {}
     
-    public void endTurn() {}
-    
     public void dicePick(int i) {}
 
     public void stealPiece() {}
     
 	public void pickPiece() {
 	}
+
+	public boolean canRoll() {
+		return false;
+	}
+
+	public boolean canPick() {
+		return false;
+	}
+
+	public boolean canSteal() {
+		return false;
+	}
     
-    
+	public boolean canPickDice() {
+		return false;
+	}
+
+	public boolean isGameOver() {
+		return false;
+	}
     
     
 }
